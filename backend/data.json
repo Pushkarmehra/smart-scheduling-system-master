@@ -1,0 +1,940 @@
+{
+    "timetable": [
+        {
+            "id": "1",
+            "day": "Monday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-108",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-1"
+        },
+        {
+            "id": "2",
+            "day": "Monday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-104",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-1"
+        },
+        {
+            "id": "3",
+            "day": "Monday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-110",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-1"
+        },
+        {
+            "id": "4",
+            "day": "Monday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-109",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-1"
+        },
+        {
+            "id": "5",
+            "day": "Monday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-105",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-1"
+        },
+        {
+            "id": "6",
+            "day": "Thursday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-104",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-1"
+        },
+        {
+            "id": "7",
+            "day": "Friday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-109",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-1"
+        },
+        {
+            "id": "8",
+            "day": "Friday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-108",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-1"
+        },
+        {
+            "id": "9",
+            "day": "Tuesday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-102",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-1"
+        },
+        {
+            "id": "10",
+            "day": "Tuesday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-107",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-1"
+        },
+        {
+            "id": "11",
+            "day": "Friday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-101",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-2"
+        },
+        {
+            "id": "12",
+            "day": "Friday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-106",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-2"
+        },
+        {
+            "id": "13",
+            "day": "Monday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-101",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-2"
+        },
+        {
+            "id": "14",
+            "day": "Monday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-102",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-2"
+        },
+        {
+            "id": "15",
+            "day": "Wednesday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-103",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-2"
+        },
+        {
+            "id": "16",
+            "day": "Wednesday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-108",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-2"
+        },
+        {
+            "id": "17",
+            "day": "Friday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-110",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-2"
+        },
+        {
+            "id": "18",
+            "day": "Monday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-107",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-2"
+        },
+        {
+            "id": "19",
+            "day": "Tuesday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-109",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-2"
+        },
+        {
+            "id": "20",
+            "day": "Tuesday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-103",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-2"
+        },
+        {
+            "id": "21",
+            "day": "Friday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-110",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-3"
+        },
+        {
+            "id": "22",
+            "day": "Friday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-102",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-3"
+        },
+        {
+            "id": "23",
+            "day": "Wednesday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-101",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-3"
+        },
+        {
+            "id": "24",
+            "day": "Wednesday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-110",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-3"
+        },
+        {
+            "id": "25",
+            "day": "Thursday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-102",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-3"
+        },
+        {
+            "id": "26",
+            "day": "Thursday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-110",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-3"
+        },
+        {
+            "id": "27",
+            "day": "Monday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-106",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-3"
+        },
+        {
+            "id": "28",
+            "day": "Monday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-101",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-3"
+        },
+        {
+            "id": "29",
+            "day": "Monday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-110",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-3"
+        },
+        {
+            "id": "30",
+            "day": "Monday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-105",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-3"
+        },
+        {
+            "id": "31",
+            "day": "Tuesday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-105",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-4"
+        },
+        {
+            "id": "32",
+            "day": "Tuesday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-108",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-4"
+        },
+        {
+            "id": "33",
+            "day": "Wednesday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-107",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-4"
+        },
+        {
+            "id": "34",
+            "day": "Wednesday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-103",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-4"
+        },
+        {
+            "id": "35",
+            "day": "Thursday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-108",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-4"
+        },
+        {
+            "id": "36",
+            "day": "Tuesday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-102",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-4"
+        },
+        {
+            "id": "37",
+            "day": "Thursday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-101",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-4"
+        },
+        {
+            "id": "38",
+            "day": "Thursday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-102",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-4"
+        },
+        {
+            "id": "39",
+            "day": "Wednesday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-102",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-4"
+        },
+        {
+            "id": "40",
+            "day": "Wednesday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-105",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-4"
+        },
+        {
+            "id": "41",
+            "day": "Wednesday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-109",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-5"
+        },
+        {
+            "id": "42",
+            "day": "Wednesday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-110",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-5"
+        },
+        {
+            "id": "43",
+            "day": "Tuesday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-109",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-5"
+        },
+        {
+            "id": "44",
+            "day": "Tuesday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-102",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-5"
+        },
+        {
+            "id": "45",
+            "day": "Friday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-105",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-5"
+        },
+        {
+            "id": "46",
+            "day": "Friday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-104",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-5"
+        },
+        {
+            "id": "47",
+            "day": "Friday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-103",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-5"
+        },
+        {
+            "id": "48",
+            "day": "Thursday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-104",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-5"
+        },
+        {
+            "id": "49",
+            "day": "Friday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-103",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-5"
+        },
+        {
+            "id": "50",
+            "day": "Friday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-102",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-5"
+        },
+        {
+            "id": "51",
+            "day": "Tuesday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-103",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-6"
+        },
+        {
+            "id": "52",
+            "day": "Tuesday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-108",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-6"
+        },
+        {
+            "id": "53",
+            "day": "Friday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-108",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-6"
+        },
+        {
+            "id": "54",
+            "day": "Friday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-108",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-6"
+        },
+        {
+            "id": "55",
+            "day": "Tuesday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-104",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-6"
+        },
+        {
+            "id": "56",
+            "day": "Tuesday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-106",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-6"
+        },
+        {
+            "id": "57",
+            "day": "Wednesday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-102",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-6"
+        },
+        {
+            "id": "58",
+            "day": "Wednesday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-101",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-6"
+        },
+        {
+            "id": "59",
+            "day": "Wednesday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-102",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-6"
+        },
+        {
+            "id": "60",
+            "day": "Thursday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-102",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-6"
+        },
+        {
+            "id": "61",
+            "day": "Monday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-106",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-7"
+        },
+        {
+            "id": "62",
+            "day": "Monday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-109",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-7"
+        },
+        {
+            "id": "63",
+            "day": "Tuesday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-109",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-7"
+        },
+        {
+            "id": "64",
+            "day": "Tuesday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-101",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-7"
+        },
+        {
+            "id": "65",
+            "day": "Wednesday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-103",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-7"
+        },
+        {
+            "id": "66",
+            "day": "Wednesday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-109",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-7"
+        },
+        {
+            "id": "67",
+            "day": "Tuesday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-102",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-7"
+        },
+        {
+            "id": "68",
+            "day": "Tuesday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-101",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-7"
+        },
+        {
+            "id": "69",
+            "day": "Friday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-107",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-7"
+        },
+        {
+            "id": "70",
+            "day": "Friday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-106",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-7"
+        },
+        {
+            "id": "71",
+            "day": "Thursday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-105",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-8"
+        },
+        {
+            "id": "72",
+            "day": "Thursday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-109",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-8"
+        },
+        {
+            "id": "73",
+            "day": "Thursday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-104",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-8"
+        },
+        {
+            "id": "74",
+            "day": "Thursday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-106",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-8"
+        },
+        {
+            "id": "75",
+            "day": "Tuesday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-107",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-8"
+        },
+        {
+            "id": "76",
+            "day": "Friday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-102",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-8"
+        },
+        {
+            "id": "77",
+            "day": "Monday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-107",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-8"
+        },
+        {
+            "id": "78",
+            "day": "Wednesday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-104",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-8"
+        },
+        {
+            "id": "79",
+            "day": "Thursday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-110",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-8"
+        },
+        {
+            "id": "80",
+            "day": "Monday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-102",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-8"
+        },
+        {
+            "id": "81",
+            "day": "Wednesday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-107",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-9"
+        },
+        {
+            "id": "82",
+            "day": "Wednesday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-109",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-9"
+        },
+        {
+            "id": "83",
+            "day": "Thursday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-101",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-9"
+        },
+        {
+            "id": "84",
+            "day": "Thursday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-106",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-9"
+        },
+        {
+            "id": "85",
+            "day": "Friday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-107",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-9"
+        },
+        {
+            "id": "86",
+            "day": "Monday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-110",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-9"
+        },
+        {
+            "id": "87",
+            "day": "Tuesday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-101",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-9"
+        },
+        {
+            "id": "88",
+            "day": "Tuesday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-105",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-9"
+        },
+        {
+            "id": "89",
+            "day": "Wednesday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-103",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-9"
+        },
+        {
+            "id": "90",
+            "day": "Thursday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-101",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-9"
+        },
+        {
+            "id": "91",
+            "day": "Thursday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-105",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-10"
+        },
+        {
+            "id": "92",
+            "day": "Thursday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-106",
+            "course": "Data Structures",
+            "faculty": "Prof Verma",
+            "batch": "CSE-10"
+        },
+        {
+            "id": "93",
+            "day": "Friday",
+            "timeSlot": "09:00-10:00",
+            "room": "Room-110",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-10"
+        },
+        {
+            "id": "94",
+            "day": "Friday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-109",
+            "course": "Database Systems",
+            "faculty": "Prof Sharma",
+            "batch": "CSE-10"
+        },
+        {
+            "id": "95",
+            "day": "Monday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-110",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-10"
+        },
+        {
+            "id": "96",
+            "day": "Monday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-102",
+            "course": "Operating Systems",
+            "faculty": "Prof Kumar",
+            "batch": "CSE-10"
+        },
+        {
+            "id": "97",
+            "day": "Wednesday",
+            "timeSlot": "10:00-11:00",
+            "room": "Room-102",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-10"
+        },
+        {
+            "id": "98",
+            "day": "Thursday",
+            "timeSlot": "14:00-15:00",
+            "room": "Room-107",
+            "course": "Computer Networks",
+            "faculty": "Prof Gupta",
+            "batch": "CSE-10"
+        },
+        {
+            "id": "99",
+            "day": "Monday",
+            "timeSlot": "13:00-14:00",
+            "room": "Room-105",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-10"
+        },
+        {
+            "id": "100",
+            "day": "Thursday",
+            "timeSlot": "11:00-12:00",
+            "room": "Room-103",
+            "course": "Software Engineering",
+            "faculty": "Prof Singh",
+            "batch": "CSE-10"
+        }
+    ],
+    "shiftRequests": [
+        {
+            "id": "1",
+            "classId": "1",
+            "studentName": "hjhjj",
+            "batch": "CSE-1",
+            "teacher": "Prof Verma",
+            "course": "Data Structures",
+            "currentDay": "Monday",
+            "currentTimeSlot": "13:00-14:00",
+            "preferredDay": "Monday",
+            "preferredTimeSlot": "09:00-10:00",
+            "reason": "",
+            "supportCount": 50,
+            "classStrength": 60,
+            "supportRatio": 0.833,
+            "status": "sent_to_teacher"
+        },
+        {
+            "id": "2",
+            "classId": "1",
+            "studentName": "hjhjj",
+            "batch": "CSE-1",
+            "teacher": "Prof Verma",
+            "course": "Data Structures",
+            "currentDay": "Monday",
+            "currentTimeSlot": "13:00-14:00",
+            "preferredDay": "Monday",
+            "preferredTimeSlot": "09:00-10:00",
+            "reason": "",
+            "supportCount": 20,
+            "classStrength": 60,
+            "supportRatio": 0.333,
+            "status": "pending_threshold"
+        }
+    ]
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Academic Scheduling System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <main class="app-shell">
+        <header class="hero-card">
+            <p class="eyebrow">Faculty Workspace</p>
+            <h1>Smart Scheduling Command Center</h1>
+            <p class="subtitle">Manage schedules across admin, teacher, and student workflows in one real-time system.</p>
+            <div class="hero-meta">
+                <span id="user-chip" class="meta-chip">User: Guest</span>
+                <span id="class-count" class="meta-chip">Classes: 0</span>
+                <span id="status-chip" class="meta-chip chip-ok">System Ready</span>
+            </div>
+        </header>
+
+        <section class="panel" id="login-panel">
+            <h2>Login</h2>
+            <div class="form-grid">
+                <label>
+                    Role
+                    <select id="role-select">
+                        <option value="admin">Admin</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
+                    </select>
+                </label>
+                <label>
+                    Name
+                    <input type="text" id="name-input" placeholder="Enter your name">
+                </label>
+                <label id="batch-login-wrap" class="hidden">
+                    Batch
+                    <select id="student-batch-select"></select>
+                </label>
+            </div>
+            <div class="action-row">
+                <button id="login-btn" class="primary-btn" type="button">Login</button>
+                <button id="logout-btn" class="ghost-btn hidden" type="button">Logout</button>
+            </div>
+        </section>
+
+        <section class="panel timetable-section" id="admin-panel">
+            <div class="panel-head">
+                <h2>Live Timetable Board</h2>
+                <button id="regenerate-btn" class="primary-btn" type="button">Regenerate Full Timetable</button>
+                <div class="search-wrap">
+                    <select id="admin-teacher-filter" aria-label="Filter by teacher"></select>
+                </div>
+                <div class="search-wrap">
+                    <input
+                        type="text"
+                        id="search-bar"
+                        placeholder="Search by faculty, course, batch, day, room, or time"
+                        aria-label="Search timetable"
+                    >
+                </div>
+            </div>
+            <p id="drag-hint" class="modal-subtext">Login as admin or teacher to drag and drop classes across slots.</p>
+
+            <div class="board-wrap">
+                <div id="schedule-grid" class="schedule-grid"></div>
+            </div>
+
+            <div class="editor-box" id="admin-editor-box">
+                <h3>Edit Class</h3>
+                <div class="form-grid">
+                    <label>
+                        Class
+                        <select id="admin-class-select"></select>
+                    </label>
+                    <label>
+                        Day
+                        <select id="admin-day-select"></select>
+                    </label>
+                    <label>
+                        Time Slot
+                        <select id="admin-slot-select"></select>
+                    </label>
+                    <label>
+                        Batch
+                        <select id="admin-batch-select"></select>
+                    </label>
+                    <label>
+                        Teacher
+                        <select id="admin-teacher-select"></select>
+                    </label>
+                    <label>
+                        Course
+                        <input type="text" id="admin-course-input" placeholder="Course name">
+                    </label>
+                    <label>
+                        Room
+                        <select id="admin-room-select"></select>
+                    </label>
+                </div>
+                <div class="action-row">
+                    <button id="admin-save-btn" class="primary-btn" type="button">Save Class Update</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel hidden" id="teacher-panel">
+            <div class="panel-head">
+                <h2>Teacher Portal</h2>
+                <button id="teacher-refresh-btn" class="ghost-btn" type="button">Refresh</button>
+            </div>
+            <div id="teacher-classes" class="list-wrap"></div>
+            <div class="editor-box">
+                <h3>Update My Class</h3>
+                <div class="form-grid">
+                    <label>
+                        My Class
+                        <select id="teacher-class-select"></select>
+                    </label>
+                    <label>
+                        Day
+                        <select id="teacher-day-select"></select>
+                    </label>
+                    <label>
+                        Time Slot
+                        <select id="teacher-slot-select"></select>
+                    </label>
+                    <label>
+                        Batch
+                        <select id="teacher-batch-select"></select>
+                    </label>
+                </div>
+                <div class="action-row">
+                    <button id="teacher-save-btn" class="primary-btn" type="button">Save My Update</button>
+                </div>
+            </div>
+
+            <div class="editor-box">
+                <h3>Student Shift Requests</h3>
+                <div id="teacher-requests" class="list-wrap"></div>
+            </div>
+        </section>
+
+        <section class="panel hidden" id="student-panel">
+            <h2>Student Portal</h2>
+            <p class="modal-subtext">Submit a class shift request. It reaches the teacher only when support is more than 50% of class strength.</p>
+
+            <div class="form-grid">
+                <label>
+                    Batch
+                    <select id="student-batch-view"></select>
+                </label>
+                <label>
+                    Class
+                    <select id="student-class-select"></select>
+                </label>
+                <label>
+                    Preferred Day
+                    <select id="student-day-select"></select>
+                </label>
+                <label>
+                    Preferred Time Slot
+                    <select id="student-slot-select"></select>
+                </label>
+                <label>
+                    Support Count
+                    <input type="number" id="support-count-input" min="0" value="1">
+                </label>
+                <label>
+                    Class Strength
+                    <input type="number" id="class-strength-input" min="1" value="60">
+                </label>
+                <label class="full-width">
+                    Reason
+                    <textarea id="student-reason-input" rows="3" placeholder="Reason for shift request"></textarea>
+                </label>
+            </div>
+
+            <div class="action-row">
+                <button id="student-request-btn" class="primary-btn" type="button">Submit Request</button>
+            </div>
+            <div id="student-request-status" class="meta-chip"></div>
+        </section>
+
+        <section id="email-preview-section" class="panel hidden">
+            <h2>System Notification Preview</h2>
+            <div id="email-content" class="email-box"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
