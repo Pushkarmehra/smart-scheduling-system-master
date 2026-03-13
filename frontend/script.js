@@ -1,5 +1,10 @@
 const API_BASE = 'http://127.0.0.1:5000/api';
 const LIVE_SYNC_INTERVAL_MS = 5000;
+const EMAIL_SERVICE_ID = 'service_g2195kc';
+const EMAIL_TEMPLATE_ID = 'template_v437uoc';
+const EMAIL_PUBLIC_KEY = '2N7Ajf083iUCh25DC';
+const EMAILJS_TEMPLATE_STORAGE_KEY = 'emailjs_template_id';
+const EMAILJS_PUBLIC_KEY_STORAGE_KEY = 'emailjs_public_key';
 
 let allClasses = [];
 let meta = { days: [], slots: [], batches: [], rooms: [], teachers: [] };
@@ -7,7 +12,22 @@ let liveSyncTimer = null;
 let draggedClassId = null;
 let currentUser = { role: null, name: null, batch: null };
 
-const DEFAULT_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+const SUBJECT_COLORS = [
+    '#2d7bc0',
+    '#0f766e',
+    '#0369a1',
+    '#7c3aed',
+    '#be185d',
+    '#b45309',
+    '#166534',
+    '#475569',
+    '#1d4ed8',
+    '#15803d',
+    '#7c2d12',
+    '#6d28d9',
+];
+
+const DEFAULT_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const DEFAULT_SLOTS = ['09:00-10:00', '10:00-11:00', '11:00-12:00', '13:00-14:00', '14:00-15:00'];
 
 const elements = {
@@ -62,6 +82,15 @@ const elements = {
 
     emailSection: document.getElementById('email-preview-section'),
     emailContent: document.getElementById('email-content'),
+
+    classDetailModal: document.getElementById('class-detail-modal'),
+    classDetailClose: document.getElementById('class-detail-close'),
+    detailSubject: document.getElementById('detail-subject'),
+    detailTeacher: document.getElementById('detail-teacher'),
+    detailVenue: document.getElementById('detail-venue'),
+    detailBatch: document.getElementById('detail-batch'),
+    detailDay: document.getElementById('detail-day'),
+    detailTime: document.getElementById('detail-time'),
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -90,6 +119,19 @@ function bindEvents() {
 
     elements.studentBatchView.addEventListener('change', populateStudentClasses);
     elements.studentRequestBtn.addEventListener('click', submitStudentRequest);
+
+    elements.classDetailClose.addEventListener('click', closeClassDetails);
+    elements.classDetailModal.addEventListener('click', (event) => {
+        if (event.target === elements.classDetailModal) {
+            closeClassDetails();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !elements.classDetailModal.classList.contains('hidden')) {
+            closeClassDetails();
+        }
+    });
 }
 
 async function bootstrap() {
@@ -660,17 +702,23 @@ function createClassCard(cls) {
     const isTeacherOwnClass = isOwnedByCurrentTeacher(cls);
     card.draggable = draggable;
     card.dataset.id = cls.id;
+    card.style.setProperty('--subject-color', getSubjectColor(cls.course));
 
     if (isTeacherOwnClass) {
         card.classList.add('class-card-mine');
     }
 
+    const compactCourse = shortenLabel(cls.course, 16);
+    const compactBatch = compactBatchLabel(cls.batch);
+    const compactRoom = shortenLabel(cls.room, 10);
+
     card.innerHTML = `
         ${isTeacherOwnClass ? '<div class="mine-badge">MY CLASS</div>' : ''}
-        <div class="class-title">${escapeHtml(cls.course)}</div>
-        <div class="class-meta">${escapeHtml(cls.batch)} | ${escapeHtml(cls.room)}</div>
-        <div class="class-meta">${escapeHtml(cls.faculty)}</div>
+        <div class="class-title">${escapeHtml(compactCourse)}</div>
+        <div class="class-meta">${escapeHtml(compactBatch)} | ${escapeHtml(compactRoom)}</div>
     `;
+
+    card.title = `${cls.course} | ${cls.batch} | ${cls.room} | ${cls.faculty}`;
 
     if (draggable) {
         card.addEventListener('dragstart', (event) => {
@@ -693,7 +741,76 @@ function createClassCard(cls) {
         card.classList.add('locked');
     }
 
+    card.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+        promptBatchNotification(cls);
+    });
+
+    card.addEventListener('click', () => {
+        openClassDetails(cls);
+    });
+
     return card;
+}
+
+function openClassDetails(cls) {
+    elements.detailSubject.textContent = String(cls.course || '-');
+    elements.detailTeacher.textContent = String(cls.faculty || '-');
+    elements.detailVenue.textContent = String(cls.room || '-');
+    elements.detailBatch.textContent = String(cls.batch || '-');
+    elements.detailDay.textContent = String(cls.day || '-');
+    elements.detailTime.textContent = String(cls.timeSlot || '-');
+
+    elements.classDetailModal.classList.remove('hidden');
+    elements.classDetailModal.setAttribute('aria-hidden', 'false');
+}
+
+function closeClassDetails() {
+    elements.classDetailModal.classList.add('hidden');
+    elements.classDetailModal.setAttribute('aria-hidden', 'true');
+}
+
+function getSubjectColor(course) {
+    const key = String(course || '').trim().toUpperCase();
+    if (!key) {
+        return '#2d7bc0';
+    }
+
+    let hash = 0;
+    for (let i = 0; i < key.length; i += 1) {
+        hash = (hash * 31 + key.charCodeAt(i)) >>> 0;
+    }
+
+    return SUBJECT_COLORS[hash % SUBJECT_COLORS.length];
+}
+
+function shortenLabel(value, maxLength) {
+    const text = String(value || '').trim();
+    if (!text) {
+        return '-';
+    }
+    if (text.length <= maxLength) {
+        return text;
+    }
+    return `${text.slice(0, Math.max(0, maxLength - 1))}…`;
+}
+
+function compactBatchLabel(batchValue) {
+    const text = String(batchValue || '').trim();
+    if (!text) {
+        return '-';
+    }
+
+    const parts = text
+        .split(',')
+        .map((part) => part.trim())
+        .filter(Boolean);
+
+    if (parts.length <= 1) {
+        return shortenLabel(parts[0] || text, 18);
+    }
+
+    return `${shortenLabel(parts[0], 10)} +${parts.length - 1}`;
 }
 
 function onDragOverCell(event) {
@@ -806,6 +923,137 @@ function normalizePersonName(value) {
     return String(value || '').trim().toLowerCase().replace(/\s+/g, ' ');
 }
 
+async function promptBatchNotification(cls) {
+    if (currentUser.role !== 'admin' && currentUser.role !== 'teacher') {
+        setStatus('Only admin/teacher can send class notifications', 'error');
+        return;
+    }
+
+    if (currentUser.role === 'teacher' && !isOwnedByCurrentTeacher(cls)) {
+        setStatus('You can notify only for your own classes', 'error');
+        return;
+    }
+
+    const wantsToSend = window.confirm(
+        `Send automated reschedule mail to ${cls.batch} for ${cls.course}?\n\n` +
+        `Schedule: ${cls.day} | ${cls.timeSlot} | ${cls.room}`
+    );
+
+    if (!wantsToSend) {
+        return;
+    }
+
+    const recipientEmail = window.prompt(
+        'Enter recipient email for this notification:',
+        'aryansuneja121@gmail.com'
+    );
+
+    if (!recipientEmail || !recipientEmail.trim()) {
+        setStatus('Notification cancelled: no email entered', 'error');
+        return;
+    }
+
+    try {
+        setStatus('Sending notification mail...', 'loading');
+        const response = await fetch(`${API_BASE}/notifications/reschedule`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                classId: cls.id,
+                recipientEmail: recipientEmail.trim(),
+                actorRole: currentUser.role,
+                actorName: currentUser.name,
+            }),
+        });
+
+        const result = await response.json();
+        if (!response.ok) {
+            throw new Error(result.error || 'Failed to send notification');
+        }
+
+        const sentViaService = await sendUsingConfiguredEmailService(result.mailDraft, cls);
+        if (sentViaService) {
+            setStatus(`Automated mail sent to ${result.mailDraft?.to || recipientEmail}`, 'ok');
+            window.alert(`Automated mail sent successfully to ${result.mailDraft?.to || recipientEmail}.`);
+            return;
+        }
+
+        setStatus(result.message || 'Notification prepared', 'ok');
+        openMailCompose(result.mailDraft);
+        window.alert(`Mail draft prepared for ${result.mailDraft?.to || recipientEmail}.`);
+    } catch (error) {
+        setStatus(error.message || 'Notification failed', 'error');
+    }
+}
+
+function getEmailServiceConfig() {
+    const templateId = EMAIL_TEMPLATE_ID;
+    const publicKey = EMAIL_PUBLIC_KEY;
+    return { templateId, publicKey };
+}
+
+function askAndStoreEmailServiceConfig() {
+    return { templateId: EMAIL_TEMPLATE_ID, publicKey: EMAIL_PUBLIC_KEY };
+}
+
+async function sendUsingConfiguredEmailService(mailDraft, cls) {
+    if (!mailDraft || !mailDraft.to || !mailDraft.subject || !mailDraft.body) {
+        return false;
+    }
+
+    if (!window.emailjs || !window.emailjs.send) {
+        return false;
+    }
+
+    let { templateId, publicKey } = getEmailServiceConfig();
+    if (!templateId || !publicKey) {
+        const configured = askAndStoreEmailServiceConfig();
+        if (!configured) {
+            return false;
+        }
+        templateId = configured.templateId;
+        publicKey = configured.publicKey;
+    }
+
+    const templateParams = {
+        email: mailDraft.to,
+        to_email: mailDraft.to,
+        subject: mailDraft.subject,
+        message: mailDraft.body,
+        batch: cls.batch,
+        course: cls.course,
+        teacher: cls.faculty,
+        day: cls.day,
+        time_of_class: cls.timeSlot,
+        venue: cls.room,
+    };
+
+    try {
+        await window.emailjs.send(EMAIL_SERVICE_ID, templateId, templateParams, { publicKey });
+        return true;
+    } catch (error) {
+        console.error('Email service send failed:', error);
+        return false;
+    }
+}
+
+function openMailCompose(mailDraft) {
+    if (!mailDraft || !mailDraft.to || !mailDraft.subject || !mailDraft.body) {
+        return;
+    }
+
+    const to = encodeURIComponent(mailDraft.to);
+    const subject = encodeURIComponent(mailDraft.subject);
+    const body = encodeURIComponent(mailDraft.body);
+
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`;
+    const gmailPopup = window.open(gmailUrl, '_blank');
+
+    if (!gmailPopup) {
+        window.location.href = `mailto:${mailDraft.to}?subject=${subject}&body=${body}`;
+    }
+}
+
 function markDroppableCells() {
     document.querySelectorAll('.slot-cell').forEach((cell) => cell.classList.add('slot-cell-active'));
 }
@@ -856,8 +1104,31 @@ function getDayOrder(classes) {
 function getSlotOrder(classes) {
     const classSlots = Array.from(new Set(classes.map((c) => c.timeSlot)));
     const ordered = DEFAULT_SLOTS.filter((s) => classSlots.includes(s));
-    const extra = classSlots.filter((s) => !ordered.includes(s)).sort();
+    const extra = classSlots
+        .filter((s) => !ordered.includes(s))
+        .sort((a, b) => parseSlotStartMinutes(a) - parseSlotStartMinutes(b));
     return [...ordered, ...extra];
+}
+
+function parseSlotStartMinutes(slot) {
+    const token = String(slot || '').trim();
+    if (!token.includes('-')) {
+        return Number.MAX_SAFE_INTEGER;
+    }
+
+    const [start] = token.split('-');
+    const match = start.trim().match(/^(\d{1,2}):(\d{2})$/);
+    if (!match) {
+        return Number.MAX_SAFE_INTEGER;
+    }
+
+    const hour = Number(match[1]);
+    const minute = Number(match[2]);
+    if (Number.isNaN(hour) || Number.isNaN(minute)) {
+        return Number.MAX_SAFE_INTEGER;
+    }
+
+    return hour * 60 + minute;
 }
 
 function startLiveSync() {

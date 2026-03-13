@@ -24,7 +24,6 @@ map<string, string> subjectTeacher = {
 
 set<string> isBusy;
 map<string, int> teacherDailyCount;
-map<string, set<int>> teacherSlotsByDay;
 
 bool checkAvailability(const string& day, int slotIndex, const string& slot, const string& batch, const string& teacher, const string& room) {
     if (isBusy.count(day + "|" + slot + "|B:" + batch)) return false;
@@ -36,15 +35,6 @@ bool checkAvailability(const string& day, int slotIndex, const string& slot, con
     // Soft constraint: keep teacher load reasonable.
     if (teacherDailyCount[dayTeacher] >= 4) return false;
 
-    // Soft constraint: no three consecutive slots for a teacher.
-    auto it = teacherSlotsByDay.find(dayTeacher);
-    if (it != teacherSlotsByDay.end() && slotIndex >= 2) {
-        const set<int>& used = it->second;
-        if (used.count(slotIndex - 1) && used.count(slotIndex - 2)) {
-            return false;
-        }
-    }
-
     return true;
 }
 
@@ -55,13 +45,12 @@ void markBusy(const string& day, int slotIndex, const string& slot, const string
 
     string dayTeacher = day + "|" + teacher;
     teacherDailyCount[dayTeacher]++;
-    teacherSlotsByDay[dayTeacher].insert(slotIndex);
 }
 
 int main() {
-    ofstream outFile("data.json");
+    ofstream outFile("timetable_cleaned.json");
     if (!outFile.is_open()) {
-        cerr << "Failed to open data.json for writing." << endl;
+        cerr << "Failed to open timetable_cleaned.json for writing." << endl;
         return 1;
     }
 

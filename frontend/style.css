@@ -262,6 +262,10 @@ h1 {
 .board-wrap {
     width: 100%;
     overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(165deg, rgba(13, 24, 43, 0.9), rgba(8, 16, 30, 0.82));
+    padding: 0.55rem;
 }
 
 .schedule-grid {
@@ -270,21 +274,31 @@ h1 {
 
 .schedule-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     table-layout: fixed;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .schedule-table th,
 .schedule-table td {
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     vertical-align: top;
 }
 
 .schedule-table th {
     text-align: center;
-    padding: 0.95rem 0.55rem;
-    font-size: 1rem;
-    background: rgba(24, 46, 86, 0.92);
+    padding: 0.88rem 0.42rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #f5f9ff;
+    background: linear-gradient(180deg, rgba(33, 62, 112, 0.94), rgba(25, 48, 89, 0.94));
+    position: sticky;
+    top: 0;
+    z-index: 3;
 }
 
 .schedule-table .day-col {
@@ -292,61 +306,69 @@ h1 {
 }
 
 .day-label {
-    text-align: center;
+    text-align: left;
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.05rem;
+    font-size: 0.93rem;
     font-weight: 700;
-    color: #e4eeff;
-    background: rgba(255, 255, 255, 0.03);
+    color: #edf4ff;
+    background: linear-gradient(180deg, rgba(26, 46, 84, 0.96), rgba(19, 35, 66, 0.96));
     vertical-align: middle !important;
+    padding: 0.95rem 0.7rem;
+    position: sticky;
+    left: 0;
+    z-index: 2;
 }
 
 .slot-cell {
-    min-height: 120px;
+    min-height: 132px;
     padding: 0.6rem;
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 255, 255, 0.025);
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.schedule-table tbody tr:nth-child(even) .slot-cell {
+    background: rgba(255, 255, 255, 0.04);
+}
+
 .slot-cell-active {
-    background: rgba(255, 255, 255, 0.045);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .slot-cell.drop-target {
-    background: rgba(45, 212, 191, 0.12);
+    background: rgba(45, 212, 191, 0.16);
     box-shadow: inset 0 0 0 2px rgba(45, 212, 191, 0.42);
 }
 
 .free-label {
-    color: #9db1db;
+    color: #a9bce1;
     font-style: italic;
     text-align: center;
-    padding: 1.3rem 0;
+    padding: 1.5rem 0;
+    font-size: 0.86rem;
 }
 
 .class-card {
-    background: linear-gradient(150deg, #2d7bc0, #3389cd);
-    border-radius: 10px;
-    padding: 0.66rem;
-    margin-bottom: 0.5rem;
+    background: linear-gradient(150deg, var(--subject-color, #2d7bc0), color-mix(in srgb, var(--subject-color, #2d7bc0) 82%, white));
+    border-radius: 12px;
+    padding: 0.52rem 0.56rem;
+    margin-bottom: 0.42rem;
     cursor: grab;
     border: 1px solid rgba(255, 255, 255, 0.24);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.22);
     transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
 }
 
 .class-card-mine {
-    background: linear-gradient(150deg, #16a34a, #22c55e);
-    border-color: rgba(187, 247, 208, 0.9);
-    box-shadow: 0 10px 20px rgba(10, 62, 28, 0.48);
+    border-color: rgba(187, 247, 208, 0.85);
+    box-shadow: 0 0 0 1px rgba(187, 247, 208, 0.55), 0 10px 20px rgba(10, 62, 28, 0.48);
 }
 
 .mine-badge {
     display: inline-block;
-    margin-bottom: 0.32rem;
+    margin-bottom: 0.24rem;
     padding: 0.12rem 0.45rem;
     border-radius: 999px;
-    font-size: 0.68rem;
+    font-size: 0.62rem;
     letter-spacing: 0.06em;
     font-weight: 700;
     color: #0f172a;
@@ -354,8 +376,8 @@ h1 {
 }
 
 .class-card:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 9px 16px rgba(0, 0, 0, 0.26);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.28);
 }
 
 .class-card.dragging {
@@ -386,15 +408,21 @@ body.drag-active .class-card:not(.dragging) {
 .class-title {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0.28rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.16rem;
     color: #f5faff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .class-meta {
-    font-size: 0.88rem;
+    font-size: 0.78rem;
     color: #e8f1ff;
-    line-height: 1.35;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 table {
@@ -472,6 +500,40 @@ tr:hover td {
     padding: 1.25rem;
     border: 1px solid rgba(255, 255, 255, 0.16);
     background: linear-gradient(170deg, rgba(10, 19, 34, 0.95), rgba(16, 30, 51, 0.95));
+}
+
+.detail-modal-content {
+    width: min(520px, 100%);
+}
+
+.detail-grid {
+    margin-top: 0.9rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+    gap: 0.75rem;
+}
+
+.detail-item {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.7rem 0.75rem;
+    display: grid;
+    gap: 0.24rem;
+}
+
+.detail-label {
+    font-size: 0.76rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #a9bce1;
+}
+
+.detail-value {
+    font-size: 0.96rem;
+    font-weight: 700;
+    color: #f4f8ff;
+    word-break: break-word;
 }
 
 .modal-head {
@@ -589,6 +651,16 @@ tr:hover td {
         width: 125px;
     }
 
+    .schedule-table th {
+        font-size: 0.86rem;
+        padding: 0.72rem 0.3rem;
+    }
+
+    .day-label {
+        font-size: 0.82rem;
+        padding: 0.72rem 0.5rem;
+    }
+
     .class-title {
         font-size: 0.9rem;
     }
@@ -598,6 +670,10 @@ tr:hover td {
     }
 
     .suggestion-card {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-grid {
         grid-template-columns: 1fr;
     }
 }

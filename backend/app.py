@@ -2,15 +2,26 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import json
 from pathlib import Path
-import random
+import re
 
 app = Flask(__name__)
 CORS(app)
 
 BASE_DIR = Path(__file__).resolve().parent
-DATA_FILE = BASE_DIR / 'data.json'
+TIMETABLE_FILE = BASE_DIR / 'timetable_cleaned.json'
+SHIFT_REQUESTS_FILE = BASE_DIR / 'shift_requests.json'
 FRONTEND_DIR = BASE_DIR.parent / 'frontend'
 DEFAULT_SLOT_ORDER = ['09:00-10:00', '10:00-11:00', '11:00-12:00', '13:00-14:00', '14:00-15:00']
+DAY_MAP = {
+    'MON': 'Monday',
+    'TUE': 'Tuesday',
+    'WED': 'Wednesday',
+    'THU': 'Thursday',
+    'FRI': 'Friday',
+    'SAT': 'Saturday',
+    'SUN': 'Sunday',
+}
+DAY_TO_SHORT = {v: k for k, v in DAY_MAP.items()}
 
 
 def _ensure_data_shape(data):
@@ -53,6 +64,121 @@ def _slot_index(slot):
         return 10_000
 
 
+def _normalize_day(value):
+    token = str(value or '').strip()
+    if not token:
+        return ''
+
+    if token in DAY_TO_SHORT:
+        return token
+
+    compact = ''.join(ch for ch in token.upper() if ch.isalpha())
+    if compact in DAY_MAP:
+        return DAY_MAP[compact]
+
+    title_token = token.title()
+    if title_token in DAY_TO_SHORT:
+        return title_token
+
+    return token
+
+
+def _parse_time_component(value, fallback_meridiem=None):
+    cleaned = str(value or '').strip().upper().replace(' ', '')
+    match = re.match(r'^(\d{1,2}):(\d{2})(AM|PM)?$', cleaned)
+    if not match:
+        return None, fallback_meridiem
+
+    hour = int(match.group(1))
+    minute = int(match.group(2))
+    meridiem = match.group(3) or fallback_meridiem
+
+    if meridiem == 'AM':
+        hour24 = 0 if hour == 12 else hour
+    elif meridiem == 'PM':
+        hour24 = 12 if hour == 12 else hour + 12
+    else:
+        hour24 = hour
+
+    return f'{hour24:02d}:{minute:02d}', meridiem
+
+
+def _normalize_time_slot(value):
+    raw = str(value or '').strip()
+    if not raw or '-' not in raw:
+        return raw
+
+    left, right = raw.split('-', 1)
+    start24, meridiem = _parse_time_component(left, None)
+    end24, _ = _parse_time_component(right, meridiem)
+
+    if start24 and end24:
+        return f'{start24}-{end24}'
+
+    return raw
+
+
+def _to_12h(value):
+    try:
+        hour_str, minute_str = str(value).split(':')
+        hour = int(hour_str)
+        minute = int(minute_str)
+    except Exception:
+        return str(value)
+
+    suffix = 'AM' if hour < 12 else 'PM'
+    hour12 = hour % 12
+    if hour12 == 0:
+        hour12 = 12
+    return f'{hour12:02d}:{minute:02d} {suffix}'
+
+
+def _denormalize_time_slot(value):
+    token = str(value or '').strip()
+    if '-' not in token:
+        return token
+
+    left, right = token.split('-', 1)
+    return f'{_to_12h(left.strip())} - {_to_12h(right.strip())}'
+
+
+def _normalize_timetable_rows(rows):
+    normalized = []
+    for idx, row in enumerate(rows or [], start=1):
+        normalized.append({
+            'id': str(idx),
+            'day': _normalize_day(row.get('Day')),
+            'timeSlot': _normalize_time_slot(row.get('Time')),
+            'course': str(row.get('Subject Code') or '').strip(),
+            'batch': str(row.get('Batch') or '').strip(),
+            'faculty': str(row.get('Teacher') or '').strip(),
+            'room': str(row.get('Venue') or '').strip(),
+        })
+    return normalized
+
+
+def _timetable_to_cleaned_rows(timetable):
+    def key_fn(item):
+        try:
+            return int(item.get('id', 0))
+        except (TypeError, ValueError):
+            return 0
+
+    rows = []
+    for item in sorted(timetable or [], key=key_fn):
+        day_full = str(item.get('day') or '').strip()
+        day_short = DAY_TO_SHORT.get(day_full, day_full[:3].upper())
+        rows.append({
+            'Day': day_short,
+            'Time': _denormalize_time_slot(item.get('timeSlot')),
+            'Subject Code': str(item.get('course') or '').strip(),
+            'Batch': str(item.get('batch') or '').strip(),
+            'Teacher': str(item.get('faculty') or '').strip(),
+            'Venue': str(item.get('room') or '').strip(),
+        })
+    return rows
+
+
 def _validate_teacher_workload(timetable, teacher, day, new_slot, exclude_class_id=None):
     teacher_slots = []
     for course in timetable:
@@ -68,21 +194,38 @@ def _validate_teacher_workload(timetable, teacher, day, new_slot, exclude_class_
     if len(unique_slots) > 4:
         return False, 'Teacher daily workload exceeded (max 4 classes/day)'
 
-    indices = [_slot_index(slot) for slot in unique_slots]
-    if len(indices) >= 3:
-        for idx in range(len(indices) - 2):
-            if indices[idx + 1] == indices[idx] + 1 and indices[idx + 2] == indices[idx + 1] + 1:
-                return False, 'Teacher would get 3 consecutive classes without break'
-
     return True, None
 
+
 def load_data():
-    with DATA_FILE.open('r', encoding='utf-8') as f:
-        return _ensure_data_shape(json.load(f))
+    timetable_rows = []
+    if TIMETABLE_FILE.exists():
+        with TIMETABLE_FILE.open('r', encoding='utf-8') as f:
+            loaded = json.load(f)
+            if isinstance(loaded, list):
+                timetable_rows = loaded
+
+    shift_requests = []
+    if SHIFT_REQUESTS_FILE.exists():
+        with SHIFT_REQUESTS_FILE.open('r', encoding='utf-8') as f:
+            loaded = json.load(f)
+            if isinstance(loaded, list):
+                shift_requests = loaded
+
+    return _ensure_data_shape({
+        'timetable': _normalize_timetable_rows(timetable_rows),
+        'shiftRequests': shift_requests,
+    })
+
 
 def save_data(data):
-    with DATA_FILE.open('w', encoding='utf-8') as f:
-        json.dump(_ensure_data_shape(data), f, indent=4)
+    safe_data = _ensure_data_shape(data)
+
+    with TIMETABLE_FILE.open('w', encoding='utf-8') as f:
+        json.dump(_timetable_to_cleaned_rows(safe_data.get('timetable', [])), f, indent=2)
+
+    with SHIFT_REQUESTS_FILE.open('w', encoding='utf-8') as f:
+        json.dump(safe_data.get('shiftRequests', []), f, indent=2)
 
 
 @app.route('/', methods=['GET'])
@@ -155,98 +298,6 @@ def _build_reschedule_options(target, timetable):
     return [{'day': o['day'], 'timeSlot': o['timeSlot'], 'room': o['room']} for o in options[:6]]
 
 
-def _generate_full_timetable():
-    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
-    slots = ['09:00-10:00', '10:00-11:00', '11:00-12:00', '13:00-14:00', '14:00-15:00']
-    batches = [f'CSE-{idx}' for idx in range(1, 11)]
-    rooms = [f'Room-{100 + idx}' for idx in range(1, 11)]
-
-    subject_teacher = {
-        'Data Structures': 'Prof Verma',
-        'Database Systems': 'Prof Sharma',
-        'Operating Systems': 'Prof Kumar',
-        'Computer Networks': 'Prof Gupta',
-        'Software Engineering': 'Prof Singh',
-    }
-
-    is_busy = set()
-    teacher_daily_count = {}
-    teacher_slot_by_day = {}
-
-    timetable = []
-    class_id = 1
-    classes_per_subject_per_week = 2
-
-    def teacher_can_take(day, slot_idx, teacher):
-        day_teacher = (day, teacher)
-        if teacher_daily_count.get(day_teacher, 0) >= 4:
-            return False
-
-        used_slots = teacher_slot_by_day.get(day_teacher, set())
-        if slot_idx >= 2 and (slot_idx - 1) in used_slots and (slot_idx - 2) in used_slots:
-            return False
-        return True
-
-    for batch in batches:
-        for subject, teacher in subject_teacher.items():
-            scheduled = 0
-            day_order = days[:]
-            random.shuffle(day_order)
-
-            for day in day_order:
-                slot_indices = list(range(len(slots)))
-                random.shuffle(slot_indices)
-
-                for slot_idx in slot_indices:
-                    if scheduled >= classes_per_subject_per_week:
-                        break
-
-                    slot = slots[slot_idx]
-                    if not teacher_can_take(day, slot_idx, teacher):
-                        continue
-
-                    room_candidates = rooms[:]
-                    random.shuffle(room_candidates)
-
-                    placed = False
-                    for room in room_candidates:
-                        if (day, slot, f'B:{batch}') in is_busy:
-                            break
-                        if (day, slot, f'T:{teacher}') in is_busy:
-                            break
-                        if (day, slot, f'R:{room}') in is_busy:
-                            continue
-
-                        is_busy.add((day, slot, f'B:{batch}'))
-                        is_busy.add((day, slot, f'T:{teacher}'))
-                        is_busy.add((day, slot, f'R:{room}'))
-
-                        day_teacher = (day, teacher)
-                        teacher_daily_count[day_teacher] = teacher_daily_count.get(day_teacher, 0) + 1
-                        teacher_slot_by_day.setdefault(day_teacher, set()).add(slot_idx)
-
-                        timetable.append({
-                            'id': str(class_id),
-                            'day': day,
-                            'timeSlot': slot,
-                            'room': room,
-                            'course': subject,
-                            'faculty': teacher,
-                            'batch': batch,
-                        })
-                        class_id += 1
-                        scheduled += 1
-                        placed = True
-                        break
-
-                    if scheduled >= classes_per_subject_per_week:
-                        break
-                    if not placed:
-                        continue
-
-    return {'timetable': timetable}
-
-
 def _resolve_room_for_move(timetable, class_id, day, slot, preferred_room):
     used_rooms = {
         c.get('room')
@@ -312,6 +363,27 @@ def _can_move_class(actor_role, actor_name, target_class):
         return True
     return False
 
+
+def _send_reschedule_email_for_class(course, recipient_email):
+    subject = 'Class Rescheduling Notification'
+    email_body = (
+        f"Dear Students ({course.get('batch')}),\n\n"
+        f"Your class for {course.get('course')} conducted by {course.get('faculty')} has been rescheduled.\n"
+        f"New Time: {course.get('day')} | {course.get('timeSlot')}\n"
+        f"Room: {course.get('room')}\n\n"
+        "Please attend the lecture as per the updated schedule.\n\n"
+        "Regards,\nAcademic Office"
+    )
+    print("--- BATCH EMAIL SENT ---")
+    print(f"To: {recipient_email}")
+    print(f"Subject: {subject}")
+    print(email_body)
+    return {
+        'to': recipient_email,
+        'subject': subject,
+        'body': email_body,
+    }
+
 @app.route('/api/timetable', methods=['GET'])
 def get_timetable():
     return jsonify(load_data().get('timetable', []))
@@ -373,13 +445,9 @@ def login():
 
 @app.route('/api/timetable/generate', methods=['POST'])
 def generate_timetable():
-    data = _generate_full_timetable()
-    save_data(data)
     return jsonify({
-        'status': 'success',
-        'generatedClasses': len(data['timetable']),
-        'message': 'Generated full timetable for 10 batches and 10 rooms.',
-    })
+        'error': 'Random timetable generation is disabled. The system uses timetable_cleaned.json as the source of truth.'
+    }), 400
 
 @app.route('/api/reschedule/suggest', methods=['POST'])
 def suggest_reschedule():
@@ -413,7 +481,7 @@ def confirm_reschedule():
     if not updated:
         return jsonify({'error': 'Class not found for reschedule'}), 404
             
-    # Save the changes permanently to data.json
+    # Save the changes permanently to timetable_cleaned.json
     save_data(data)
     
     email_body = f"""
@@ -530,6 +598,38 @@ def move_class():
         'status': 'success',
         'message': 'Class moved successfully.',
         'updatedClass': updated_course,
+    })
+
+
+@app.route('/api/notifications/reschedule', methods=['POST'])
+def send_reschedule_notification():
+    req = request.json or {}
+    class_id = req.get('classId')
+    recipient_email = (req.get('recipientEmail') or 'aryansuneja121@gmail.com').strip()
+    actor_role = (req.get('actorRole') or '').strip().lower()
+    actor_name = (req.get('actorName') or '').strip()
+
+    if not class_id:
+        return jsonify({'error': 'classId is required'}), 400
+    if actor_role not in {'admin', 'teacher'}:
+        return jsonify({'error': 'actorRole must be admin or teacher'}), 400
+    if not actor_name:
+        return jsonify({'error': 'actorName is required'}), 400
+
+    data = load_data()
+    target = next((c for c in data.get('timetable', []) if c.get('id') == class_id), None)
+    if not target:
+        return jsonify({'error': 'Class not found'}), 404
+    if not _can_move_class(actor_role, actor_name, target):
+        return jsonify({'error': 'Permission denied for sending this notification'}), 403
+
+    mail_draft = _send_reschedule_email_for_class(target, recipient_email)
+    return jsonify({
+        'status': 'success',
+        'message': f"Notification sent to batch {target.get('batch')}.",
+        'notifiedBatch': target.get('batch'),
+        'classId': class_id,
+        'mailDraft': mail_draft,
     })
 
 
