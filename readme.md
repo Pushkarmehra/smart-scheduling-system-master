@@ -1,209 +1,97 @@
 # Smart Scheduling System
 
-Modern timetable management platform with real-time schedule updates, drag-and-drop class movement, conflict-aware validation, and persistent JSON storage.
+Smart Scheduling System is a Flask + Vanilla JavaScript web app for managing timetable operations with conflict-aware class moves, teacher request workflows, and JSON-based persistence.
 
-## Why This Project
+## Features
 
-- Visual day/time timetable board (like an academic operations console)
-- Drag a class card to a new slot and save instantly
-- Conflict checks for faculty, batch, and room before update
-- Full timetable generator for scaled demo data
-- Auto-sync updates on the website
+- Role-based access for admin, teacher, and student flows
+- Timetable board served from Flask with live frontend updates
+- Conflict-safe class movement with room auto-resolution
+- Teacher workload guard (max 4 classes per day)
+- Student shift requests with support-threshold logic
+- Teacher approve/reject flow for shift requests
+- Notification draft generation for batch reschedule alerts
 
 ## Tech Stack
 
-### Frontend
+- Backend: Python 3, Flask, Flask-CORS
+- Frontend: HTML, CSS, Vanilla JavaScript
+- Storage: JSON files (no database required)
 
-- HTML5
-- CSS3 (custom design system, gradients, responsive layout)
-- Vanilla JavaScript (ES6+)
-- Browser Drag and Drop API
-- Fetch API for backend calls
+## Data Files
 
-### Backend
+- backend/timetable_cleaned.json: timetable source of truth
+- backend/shift_requests.json: student shift request records
 
-- Python 3
-- Flask (REST API + static frontend serving)
-- Flask-CORS
-- JSON file persistence (no DB required)
-- pathlib, random, json (Python stdlib)
+## API Overview
 
-### Timetable Engine
+- GET /api/timetable
+  - Returns the full timetable.
 
-- C++17
-- STL containers and utility headers:
-- vector, map, set, algorithm, random, string, iostream, fstream
+- GET /api/meta
+  - Returns available days, slots, batches, rooms, and teachers.
 
-### Data Layer
+- POST /api/auth/login
+  - Role-based login for admin, teacher, or student.
 
-- data.json as source of truth for timetable entries
+- PUT /api/timetable/update
+  - Updates a class entry with validation.
 
-## Architecture
+- POST /api/timetable/move
+  - Moves a class to a new day/slot with conflict checks.
 
-1. Frontend loads timetable from API.
-2. Frontend renders grid: rows = days, columns = time slots.
-3. User drags a class card into another slot.
-4. Frontend calls move API.
-5. Backend validates constraints and updates data.json.
-6. Frontend updates instantly and keeps syncing in background.
+- POST /api/reschedule/suggest
+  - Returns ranked valid alternatives for a class.
 
-## Algorithms Used
+- POST /api/reschedule/confirm
+  - Applies a selected reschedule option.
 
-### 1) Timetable Generation Heuristic (Python + C++)
+- POST /api/notifications/reschedule
+  - Builds and returns a notification draft for affected students.
 
-Approach: randomized heuristic placement with constraints.
+- GET /api/teacher/classes
+  - Returns classes for a teacher.
 
-Hard constraints:
+- POST /api/requests
+  - Creates a student shift request.
 
-- No faculty overlap at same day/time
-- No batch overlap at same day/time
-- No room overlap at same day/time
+- GET /api/requests/teacher
+  - Lists teacher-visible pending requests.
 
-Soft constraints:
-
-- Teacher daily workload cap (max 4 classes/day)
-- Avoid 3 consecutive slots for a teacher
-
-Generation scale:
-
-- 5 days
-- 5 time slots/day
-- 10 batches
-- 5 subjects
-- 5 teachers
-- 10 rooms
-- 2 sessions per subject per batch per week
-
-Expected volume:
-
-- 100 classes (10 batches x 5 subjects x 2 sessions)
-
-### 2) Reschedule Suggestion Scoring
-
-Approach: evaluate candidate day/time/room options and rank by minimal-disruption score.
-
-Checks:
-
-- Faculty conflict detection
-- Batch conflict detection
-- Room conflict detection
-
-Ranking idea:
-
-- Prefer same day/time/room proximity with zero conflicts
-- Return top valid alternatives
-
-### 3) Drag-and-Drop Move Algorithm
-
-When a class is dropped:
-
-1. Validate target slot is legal for faculty and batch.
-2. Resolve room availability:
-- Keep current room if free.
-- Else pick first available room at that slot.
-3. Persist update to data.json.
-4. Return updated class object to frontend.
-
-## API Endpoints
-
-### GET /api/timetable
-
-- Returns full timetable list.
-
-### POST /api/timetable/generate
-
-- Generates a full timetable and saves into data.json.
-- Returns generatedClasses count.
-
-### POST /api/timetable/move
-
-- Body: id, newDay, newTimeSlot
-- Moves class after conflict checks and room resolution.
-- Persists to data.json.
-
-### POST /api/reschedule/suggest
-
-- Returns ranked alternative slots for a class.
-
-### POST /api/reschedule/confirm
-
-- Confirms selected slot and persists update.
-- Returns updated class and sent status metadata.
+- POST /api/requests/<request_id>/decision
+  - Teacher approves or rejects a request.
 
 ## Project Structure
 
-- backend/app.py: Flask server, APIs, validation, persistence
-- backend/data.json: timetable storage
-- backend/scheduler.cpp: C++ generator engine
-- backend/generate.cpp: C++ full generator variant
+- backend/app.py: Flask app, API routes, business rules, JSON I/O
+- backend/timetable_cleaned.json: timetable data
+- backend/shift_requests.json: shift requests data
 - frontend/index.html: UI markup
-- frontend/style.css: visual system and responsive styles
-- frontend/script.js: rendering, drag-drop, sync, API orchestration
-
-## Real-Time Behavior
-
-- Instant local UI update after successful move/confirm
-- Background sync polling every 5 seconds to reflect external updates
+- frontend/style.css: UI styles
+- frontend/script.js: UI behavior and API integration
 
 ## Run Locally (Windows)
 
-1. Open terminal in project backend folder.
+1. Open a terminal in the backend folder.
 2. Install dependencies:
 
 ```bash
 pip install flask flask-cors
 ```
 
-3. Start backend:
+3. Start the server:
 
 ```bash
 python app.py
 ```
 
-4. Open in browser:
+4. Open the app:
 
 ```text
 http://127.0.0.1:5000
 ```
 
-## Build C++ Generator (Optional)
+## Notes
 
-From backend folder:
-
-```bash
-g++ -std=c++17 scheduler.cpp -o scheduler.exe
-g++ -std=c++17 generate.cpp -o generate.exe
-```
-
-## Troubleshooting
-
-### python app.py exits with code 1
-
-Cause:
-
-- Flask packages are missing in your current Python environment.
-
-Fix:
-
-```bash
-pip install flask flask-cors
-python app.py
-```
-
-### Drag drop does not save
-
-Check:
-
-- Backend is running on port 5000
-- Move request to /api/timetable/move returns success
-- data.json is writable
-
-## Version Snapshot
-
-- Frontend: Custom board UI with drag-and-drop cards
-- Backend: Flask APIs with conflict-safe persistence
-- Generator: Scaled timetable heuristic with workload balancing
-
----
-
-Built for fast scheduling operations, clean UX, and practical academic constraints.
+- The legacy random generation endpoint is intentionally disabled.
+- The app persists changes directly to backend/timetable_cleaned.json and backend/shift_requests.json.
