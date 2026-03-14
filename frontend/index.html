@@ -15,19 +15,9 @@
     <div class="bg-glow bg-glow-2"></div>
 
     <main class="app-shell">
-        <header class="hero-card">
-            <p class="eyebrow">Faculty Workspace</p>
-            <h1>Smart Scheduling Command Center</h1>
-            <p class="subtitle">Manage schedules across admin, teacher, and student workflows in one real-time system.</p>
-            <div class="hero-meta">
-                <span id="user-chip" class="meta-chip">User: Guest</span>
-                <span id="class-count" class="meta-chip">Classes: 0</span>
-                <span id="status-chip" class="meta-chip chip-ok">System Ready</span>
-            </div>
-        </header>
-
-        <section class="panel" id="login-panel">
+        <section class="panel auth-panel" id="login-panel">
             <h2>Login</h2>
+            <p class="modal-subtext">Select role and sign in to access timetable tools.</p>
             <div class="form-grid">
                 <label>
                     Role
@@ -48,14 +38,40 @@
             </div>
             <div class="action-row">
                 <button id="login-btn" class="primary-btn" type="button">Login</button>
-                <button id="logout-btn" class="ghost-btn hidden" type="button">Logout</button>
             </div>
         </section>
 
-        <section class="panel timetable-section" id="admin-panel">
+        <section id="app-view" class="dashboard hidden">
+            <aside class="panel sidebar" id="app-sidebar">
+                <h3>Navigation</h3>
+                <div class="sidebar-nav">
+                    <button id="nav-timetable" class="ghost-btn nav-btn" type="button">Timetable</button>
+                    <button id="nav-teacher" class="ghost-btn nav-btn" type="button">Teacher Portal</button>
+                    <button id="nav-requests" class="ghost-btn nav-btn" type="button">Student Shift Requests</button>
+                </div>
+                <div class="action-row">
+                    <button id="logout-btn" class="ghost-btn" type="button">Logout</button>
+                </div>
+            </aside>
+
+            <div class="dashboard-main">
+                <header class="hero-card">
+                    <p class="eyebrow">Faculty Workspace</p>
+                    <h1>Smart Scheduling Command Center</h1>
+                    <p class="subtitle">Manage schedules across admin, teacher, and student workflows in one real-time system.</p>
+                    <div class="hero-meta">
+                        <span id="user-chip" class="meta-chip">User: Guest</span>
+                        <span id="class-count" class="meta-chip">Classes: 0</span>
+                        <span id="status-chip" class="meta-chip chip-ok">System Ready</span>
+                    </div>
+                </header>
+
+                <section class="panel timetable-section" id="admin-panel">
             <div class="panel-head">
                 <h2>Live Timetable Board</h2>
-                <button id="regenerate-btn" class="primary-btn" type="button">Regenerate Full Timetable</button>
+                <button id="create-timetable-btn" class="primary-btn" type="button">Open Timetable Generator</button>
+                <button id="save-drag-btn" class="primary-btn" type="button" disabled>Save Drag Changes</button>
+                <span id="pending-moves-chip" class="meta-chip">Pending moves: 0</span>
                 <div class="search-wrap">
                     <select id="admin-teacher-filter" aria-label="Filter by teacher"></select>
                 </div>
@@ -110,9 +126,9 @@
                     <button id="admin-save-btn" class="primary-btn" type="button">Save Class Update</button>
                 </div>
             </div>
-        </section>
+                </section>
 
-        <section class="panel hidden" id="teacher-panel">
+                <section class="panel hidden" id="teacher-panel">
             <div class="panel-head">
                 <h2>Teacher Portal</h2>
                 <button id="teacher-refresh-btn" class="ghost-btn" type="button">Refresh</button>
@@ -142,18 +158,19 @@
                     <button id="teacher-save-btn" class="primary-btn" type="button">Save My Update</button>
                 </div>
             </div>
+                </section>
 
-            <div class="editor-box">
-                <h3>Student Shift Requests</h3>
-                <div id="teacher-requests" class="list-wrap"></div>
-            </div>
-        </section>
+                <section class="panel hidden" id="requests-panel">
+                    <h2>Student Shift Requests</h2>
+                    <p class="modal-subtext">Review and act on requests sent by students.</p>
+                    <div id="teacher-requests" class="list-wrap"></div>
+                </section>
 
-        <section class="panel hidden" id="student-panel">
-            <h2>Student Portal</h2>
-            <p class="modal-subtext">Submit a class shift request. It reaches the teacher only when support is more than 50% of class strength.</p>
+                <section class="panel hidden" id="student-panel">
+                    <h2>Student Shift Requests</h2>
+                    <p class="modal-subtext">Submit a class shift request. It reaches the teacher only when support is more than 50% of class strength.</p>
 
-            <div class="form-grid">
+                    <div class="form-grid">
                 <label>
                     Batch
                     <select id="student-batch-view"></select>
@@ -182,17 +199,19 @@
                     Reason
                     <textarea id="student-reason-input" rows="3" placeholder="Reason for shift request"></textarea>
                 </label>
-            </div>
+                    </div>
 
-            <div class="action-row">
+                    <div class="action-row">
                 <button id="student-request-btn" class="primary-btn" type="button">Submit Request</button>
-            </div>
-            <div id="student-request-status" class="meta-chip"></div>
-        </section>
+                    </div>
+                    <div id="student-request-status" class="meta-chip"></div>
+                </section>
 
-        <section id="email-preview-section" class="panel hidden">
+                <section id="email-preview-section" class="panel hidden">
             <h2>System Notification Preview</h2>
             <div id="email-content" class="email-box"></div>
+                </section>
+            </div>
         </section>
     </main>
 
@@ -226,6 +245,36 @@
                 <div class="detail-item">
                     <span class="detail-label">Time</span>
                     <span id="detail-time" class="detail-value">-</span>
+                </div>
+            </div>
+
+            <div id="reschedule-panel" class="editor-box">
+                <h3>Reschedule Options</h3>
+                <p id="reschedule-hint" class="modal-subtext">Select a valid slot to reschedule this class.</p>
+
+                <div class="form-grid">
+                    <label class="full-width">
+                        Choose Day
+                        <select id="reschedule-day-filter"></select>
+                    </label>
+                </div>
+
+                <div id="reschedule-options" class="suggestions-container"></div>
+
+                <div class="form-grid">
+                    <label class="full-width">
+                        Recipient Email
+                        <input type="email" id="reschedule-recipient-email" placeholder="example@college.edu" value="aryansuneja121@gmail.com">
+                    </label>
+                    <label class="full-width">
+                        Reschedule Reason (optional)
+                        <textarea id="reschedule-reason-input" rows="3" placeholder="Add reason to include in the notification mail"></textarea>
+                    </label>
+                </div>
+
+                <div class="action-row">
+                    <button id="confirm-reschedule-btn" class="primary-btn" type="button" disabled>Confirm Reschedule</button>
+                    <button id="send-reschedule-mail-btn" class="ghost-btn" type="button" disabled>Send Mail Notification</button>
                 </div>
             </div>
         </div>

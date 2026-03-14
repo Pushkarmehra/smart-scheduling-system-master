@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <main class="app-shell">
+        <section class="panel generator-panel">
+            <div class="panel-head">
+                <h2>AI Timetable Generator</h2>
+                <div class="action-row">
+                    <button id="back-dashboard-btn" class="ghost-btn" type="button">Back to Dashboard</button>
+                </div>
+            </div>
+            <p class="modal-subtext">Enter full class details in table format. Data will be structured and sent to your local LLM for timetable generation.</p>
+
+            <div class="form-grid">
+                <label>
+                    Food Break Slots Per Day (1-2)
+                    <input type="number" id="food-break-slots" min="1" max="2" value="1">
+                </label>
+                <label>
+                    Additional Constraints
+                    <input type="text" id="additional-constraints" placeholder="Example: avoid back-to-back practical sessions">
+                </label>
+            </div>
+
+            <div class="table-wrap generator-table-wrap">
+                <table class="generator-table" id="subject-table">
+                    <thead>
+                        <tr>
+                            <th>Subject Name</th>
+                            <th>Subject Teacher</th>
+                            <th>Batch</th>
+                            <th>Day</th>
+                            <th>Time Slot</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subject-table-body"></tbody>
+                </table>
+            </div>
+
+            <div class="action-row">
+                <button id="add-row-btn" class="ghost-btn" type="button">Add Subject Row</button>
+                <button id="generate-table-btn" class="primary-btn" type="button">Generate Timetable</button>
+            </div>
+
+            <div id="generated-preview-section" class="editor-box hidden">
+                <h3>Generated Timetable Preview</h3>
+                <p class="modal-subtext">Review this table. If it looks good, click Set as Original Timetable.</p>
+                <div class="table-wrap generator-table-wrap">
+                    <table class="generator-table" id="generated-preview-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Day</th>
+                                <th>Time Slot</th>
+                                <th>Course</th>
+                                <th>Teacher</th>
+                                <th>Batch</th>
+                                <th>Room</th>
+                            </tr>
+                        </thead>
+                        <tbody id="generated-preview-body"></tbody>
+                    </table>
+                </div>
+                <div class="action-row">
+                    <button id="apply-generated-btn" class="primary-btn" type="button" disabled>Set as Original Timetable</button>
+                    <button id="clear-generated-btn" class="ghost-btn" type="button">Clear Preview</button>
+                </div>
+            </div>
+
+            <div id="generator-status" class="meta-chip chip-loading hidden">Preparing...</div>
+            <div id="llm-prompt-output" class="email-box hidden"></div>
+        </section>
+    </main>
+
+    <script src="timetable-generator.js"></script>
+</body>
+</html>

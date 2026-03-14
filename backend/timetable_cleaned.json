@@ -577,11 +577,11 @@
   },
   {
     "Day": "MON",
-    "Time": "04:00 PM - 04:55 PM",
+    "Time": "05:00 PM - 05:55 PM",
     "Subject Code": "L-25B11CI413",
     "Batch": "24A11,24A12,24A13",
     "Teacher": "RBT",
-    "Venue": "LT2"
+    "Venue": "DLC,LT3"
   },
   {
     "Day": "MON",
@@ -637,7 +637,7 @@
     "Subject Code": "P-25B1WCI471",
     "Batch": "B51[24I11,24I13]",
     "Teacher": "HST",
-    "Venue": "CL4"
+    "Venue": "CL1"
   },
   {
     "Day": "MON",
@@ -2280,7 +2280,7 @@
     "Venue": "TR4"
   },
   {
-    "Day": "THU",
+    "Day": "FRI",
     "Time": "12:00 PM - 12:55 PM",
     "Subject Code": "L-25B11CI413",
     "Batch": "24A11,24A12,24A13",
@@ -2437,7 +2437,7 @@
     "Subject Code": "L-25B11CI414",
     "Batch": "24I11,24I12,24I13",
     "Teacher": "RKI",
-    "Venue": "CR4"
+    "Venue": "BIL"
   },
   {
     "Day": "THU",

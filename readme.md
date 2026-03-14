@@ -76,7 +76,7 @@ Smart Scheduling System is a Flask + Vanilla JavaScript web app for managing tim
 2. Install dependencies:
 
 ```bash
-pip install flask flask-cors
+pip install flask flask-cors pyjwt
 ```
 
 3. Start the server:

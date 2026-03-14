@@ -5,12 +5,22 @@ const EMAIL_TEMPLATE_ID = 'template_v437uoc';
 const EMAIL_PUBLIC_KEY = '2N7Ajf083iUCh25DC';
 const EMAILJS_TEMPLATE_STORAGE_KEY = 'emailjs_template_id';
 const EMAILJS_PUBLIC_KEY_STORAGE_KEY = 'emailjs_public_key';
+const SESSION_STORAGE_KEY = 'smart_sched_session';
 
 let allClasses = [];
 let meta = { days: [], slots: [], batches: [], rooms: [], teachers: [] };
 let liveSyncTimer = null;
 let draggedClassId = null;
 let currentUser = { role: null, name: null, batch: null };
+let authToken = null;
+let pendingDragMoves = new Map();
+let searchDebounceTimer = null;
+let renderRafId = null;
+let modalClassId = null;
+let modalSelectedOption = null;
+let modalUpdatedClass = null;
+let modalRescheduleOptions = [];
+let activeDashboardView = 'timetable';
 
 const SUBJECT_COLORS = [
     '#2d7bc0',
@@ -31,12 +41,19 @@ const DEFAULT_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'S
 const DEFAULT_SLOTS = ['09:00-10:00', '10:00-11:00', '11:00-12:00', '13:00-14:00', '14:00-15:00'];
 
 const elements = {
+    appView: document.getElementById('app-view'),
+    navTimetable: document.getElementById('nav-timetable'),
+    navTeacher: document.getElementById('nav-teacher'),
+    navRequests: document.getElementById('nav-requests'),
+
     userChip: document.getElementById('user-chip'),
     classCount: document.getElementById('class-count'),
     statusChip: document.getElementById('status-chip'),
     scheduleGrid: document.getElementById('schedule-grid'),
     searchBar: document.getElementById('search-bar'),
-    regenerateBtn: document.getElementById('regenerate-btn'),
+    createTimetableBtn: document.getElementById('create-timetable-btn'),
+    saveDragBtn: document.getElementById('save-drag-btn'),
+    pendingMovesChip: document.getElementById('pending-moves-chip'),
 
     loginPanel: document.getElementById('login-panel'),
     roleSelect: document.getElementById('role-select'),
@@ -60,6 +77,7 @@ const elements = {
     adminSaveBtn: document.getElementById('admin-save-btn'),
 
     teacherPanel: document.getElementById('teacher-panel'),
+    requestsPanel: document.getElementById('requests-panel'),
     teacherRefreshBtn: document.getElementById('teacher-refresh-btn'),
     teacherClasses: document.getElementById('teacher-classes'),
     teacherClassSelect: document.getElementById('teacher-class-select'),
@@ -91,16 +109,103 @@ const elements = {
     detailBatch: document.getElementById('detail-batch'),
     detailDay: document.getElementById('detail-day'),
     detailTime: document.getElementById('detail-time'),
+    reschedulePanel: document.getElementById('reschedule-panel'),
+    rescheduleHint: document.getElementById('reschedule-hint'),
+    rescheduleDayFilter: document.getElementById('reschedule-day-filter'),
+    rescheduleOptions: document.getElementById('reschedule-options'),
+    rescheduleRecipientEmail: document.getElementById('reschedule-recipient-email'),
+    rescheduleReasonInput: document.getElementById('reschedule-reason-input'),
+    confirmRescheduleBtn: document.getElementById('confirm-reschedule-btn'),
+    sendRescheduleMailBtn: document.getElementById('send-reschedule-mail-btn'),
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
+    restoreSession();
     bindEvents();
     await bootstrap();
 });
 
+function restoreSession() {
+    try {
+        const raw = window.localStorage.getItem(SESSION_STORAGE_KEY);
+        if (!raw) {
+            return;
+        }
+
+        const parsed = JSON.parse(raw);
+        if (!parsed || !parsed.token || !parsed.user) {
+            return;
+        }
+
+        authToken = parsed.token;
+        currentUser = parsed.user;
+        elements.userChip.textContent = `User: ${currentUser.name} (${currentUser.role})`;
+        elements.logoutBtn.classList.remove('hidden');
+    } catch (error) {
+        console.warn('Failed to restore session:', error);
+    }
+}
+
+function persistSession() {
+    if (!authToken || !currentUser?.role) {
+        window.localStorage.removeItem(SESSION_STORAGE_KEY);
+        return;
+    }
+
+    window.localStorage.setItem(
+        SESSION_STORAGE_KEY,
+        JSON.stringify({ token: authToken, user: currentUser })
+    );
+}
+
+async function authFetch(url, options = {}) {
+    const headers = {
+        ...(options.headers || {}),
+    };
+
+    if (authToken) {
+        headers.Authorization = `Bearer ${authToken}`;
+    }
+
+    const response = await fetch(url, {
+        ...options,
+        headers,
+    });
+
+    if (response.status === 401) {
+        authToken = null;
+        currentUser = { role: null, name: null, batch: null };
+        persistSession();
+        renderRolePanels();
+        refreshPendingMovesUI();
+    }
+
+    return response;
+}
+
+function refreshPendingMovesUI() {
+    const pendingCount = pendingDragMoves.size;
+    elements.pendingMovesChip.textContent = `Pending moves: ${pendingCount}`;
+
+    const canSave = (currentUser.role === 'admin' || currentUser.role === 'teacher') && pendingCount > 0;
+    elements.saveDragBtn.disabled = !canSave;
+}
+
 function bindEvents() {
-    elements.searchBar.addEventListener('input', renderCurrentView);
-    elements.regenerateBtn.addEventListener('click', regenerateTimetable);
+    elements.searchBar.addEventListener('input', () => {
+        if (searchDebounceTimer) {
+            clearTimeout(searchDebounceTimer);
+        }
+        searchDebounceTimer = setTimeout(() => {
+            renderCurrentView();
+        }, 120);
+    });
+    elements.saveDragBtn.addEventListener('click', savePendingDragChanges);
+    elements.createTimetableBtn.addEventListener('click', openTimetableGeneratorPage);
+
+    elements.navTimetable.addEventListener('click', () => setActiveDashboardView('timetable'));
+    elements.navTeacher.addEventListener('click', () => setActiveDashboardView('teacher'));
+    elements.navRequests.addEventListener('click', () => setActiveDashboardView('requests'));
 
     elements.roleSelect.addEventListener('change', toggleLoginBatchField);
     elements.loginBtn.addEventListener('click', login);
@@ -121,6 +226,9 @@ function bindEvents() {
     elements.studentRequestBtn.addEventListener('click', submitStudentRequest);
 
     elements.classDetailClose.addEventListener('click', closeClassDetails);
+    elements.confirmRescheduleBtn.addEventListener('click', confirmClassRescheduleFromModal);
+    elements.sendRescheduleMailBtn.addEventListener('click', sendRescheduleMailFromModal);
+    elements.rescheduleDayFilter.addEventListener('change', onRescheduleDayFilterChange);
     elements.classDetailModal.addEventListener('click', (event) => {
         if (event.target === elements.classDetailModal) {
             closeClassDetails();
@@ -132,18 +240,24 @@ function bindEvents() {
             closeClassDetails();
         }
     });
+
+    // Use delegated drag/drop listeners once on the grid instead of re-binding per cell on each render.
+    elements.scheduleGrid.addEventListener('dragover', onGridDragOver);
+    elements.scheduleGrid.addEventListener('dragleave', onGridDragLeave);
+    elements.scheduleGrid.addEventListener('drop', onGridDrop);
 }
 
 async function bootstrap() {
     await Promise.all([loadMeta(), loadTimetable()]);
     fillStaticSelects();
     renderRolePanels();
+    refreshPendingMovesUI();
     startLiveSync();
 }
 
 async function loadMeta() {
     try {
-        const response = await fetch(`${API_BASE}/meta`);
+        const response = await authFetch(`${API_BASE}/meta`);
         if (!response.ok) {
             throw new Error(`Failed with status ${response.status}`);
         }
@@ -158,15 +272,17 @@ async function loadTimetable() {
     setStatus('Loading timetable...', 'loading');
 
     try {
-        const response = await fetch(`${API_BASE}/timetable`);
+        const response = await authFetch(`${API_BASE}/timetable`);
         if (!response.ok) {
             throw new Error(`Failed with status ${response.status}`);
         }
 
         allClasses = await response.json();
+        pendingDragMoves.clear();
         renderCurrentView();
         updateMeta(allClasses);
         populateRoleDataViews();
+        refreshPendingMovesUI();
         setStatus('Timetable synced', 'ok');
     } catch (error) {
         console.error('Error loading timetable:', error);
@@ -242,6 +358,52 @@ function toggleLoginBatchField() {
     elements.batchLoginWrap.classList.toggle('hidden', role !== 'student');
 }
 
+function getAvailableDashboardViews(role) {
+    if (role === 'teacher') {
+        return ['timetable', 'teacher', 'requests'];
+    }
+
+    if (role === 'student') {
+        return ['timetable', 'requests'];
+    }
+
+    if (role === 'admin') {
+        return ['timetable'];
+    }
+
+    return [];
+}
+
+function setActiveDashboardView(view) {
+    const role = currentUser.role;
+    const available = getAvailableDashboardViews(role);
+    const nextView = available.includes(view) ? view : available[0] || 'timetable';
+    activeDashboardView = nextView;
+
+    const showTimetable = nextView === 'timetable';
+    const showTeacher = nextView === 'teacher' && role === 'teacher';
+    const showRequestsTeacher = nextView === 'requests' && role === 'teacher';
+    const showRequestsStudent = nextView === 'requests' && role === 'student';
+
+    elements.adminPanel.classList.toggle('hidden', !showTimetable);
+    elements.teacherPanel.classList.toggle('hidden', !showTeacher);
+    elements.requestsPanel.classList.toggle('hidden', !showRequestsTeacher);
+    elements.studentPanel.classList.toggle('hidden', !showRequestsStudent);
+
+    elements.navTimetable.classList.toggle('active', nextView === 'timetable');
+    elements.navTeacher.classList.toggle('active', nextView === 'teacher');
+    elements.navRequests.classList.toggle('active', nextView === 'requests');
+
+    if (showTeacher || showRequestsTeacher) {
+        refreshTeacherPanel();
+    }
+
+    if (showRequestsStudent) {
+        elements.studentBatchView.value = currentUser.batch || elements.studentBatchView.value;
+        populateStudentClasses();
+    }
+}
+
 async function login() {
     const role = elements.roleSelect.value;
     const name = elements.nameInput.value.trim();
@@ -260,11 +422,14 @@ async function login() {
         }
 
         currentUser = { role: result.role, name: result.name, batch: result.batch || null };
+        authToken = result.token || null;
+        persistSession();
         elements.userChip.textContent = `User: ${currentUser.name} (${currentUser.role})`;
         elements.logoutBtn.classList.remove('hidden');
         renderRolePanels();
         populateRoleDataViews();
         renderCurrentView();
+        refreshPendingMovesUI();
         setStatus('Login successful', 'ok');
     } catch (error) {
         setStatus(error.message, 'error');
@@ -273,19 +438,48 @@ async function login() {
 
 function logout() {
     currentUser = { role: null, name: null, batch: null };
+    authToken = null;
+    pendingDragMoves.clear();
+    persistSession();
     elements.userChip.textContent = 'User: Guest';
     elements.logoutBtn.classList.add('hidden');
     elements.studentRequestStatus.textContent = '';
     renderRolePanels();
+    refreshPendingMovesUI();
     renderCurrentView();
     setStatus('Logged out', 'ok');
 }
 
 function renderRolePanels() {
     const role = currentUser.role;
-    elements.adminPanel.classList.remove('hidden');
-    elements.regenerateBtn.classList.toggle('hidden', role !== 'admin');
+    const isLoggedIn = Boolean(role);
+    elements.loginPanel.classList.toggle('hidden', isLoggedIn);
+    elements.appView.classList.toggle('hidden', !isLoggedIn);
+
+    if (!isLoggedIn) {
+        elements.adminPanel.classList.add('hidden');
+        elements.teacherPanel.classList.add('hidden');
+        elements.requestsPanel.classList.add('hidden');
+        elements.studentPanel.classList.add('hidden');
+        document.body.classList.remove('teacher-mode');
+        refreshPendingMovesUI();
+        return;
+    }
+
+    elements.createTimetableBtn.classList.toggle('hidden', role !== 'admin');
+    elements.saveDragBtn.classList.toggle('hidden', role !== 'admin' && role !== 'teacher');
+    elements.pendingMovesChip.classList.toggle('hidden', role !== 'admin' && role !== 'teacher');
     elements.adminEditorBox.classList.toggle('hidden', role !== 'admin');
+
+    const available = getAvailableDashboardViews(role);
+    elements.navTeacher.classList.toggle('hidden', !available.includes('teacher'));
+    elements.navRequests.classList.toggle('hidden', !available.includes('requests'));
+    elements.navRequests.textContent = role === 'student' ? 'Student Shift Request' : 'Student Shift Requests';
+
+    if (!available.includes(activeDashboardView)) {
+        activeDashboardView = available[0] || 'timetable';
+    }
+    setActiveDashboardView(activeDashboardView);
 
     if (role === 'admin') {
         elements.dragHint.textContent = 'Drag and drop enabled for all classes.';
@@ -295,9 +489,12 @@ function renderRolePanels() {
         elements.dragHint.textContent = 'Login as admin or teacher to drag and drop classes across slots.';
     }
 
-    elements.teacherPanel.classList.toggle('hidden', role !== 'teacher');
-    elements.studentPanel.classList.toggle('hidden', role !== 'student');
     document.body.classList.toggle('teacher-mode', role === 'teacher');
+    refreshPendingMovesUI();
+}
+
+function openTimetableGeneratorPage() {
+    window.location.href = '/timetable-generator.html';
 }
 
 function populateRoleDataViews() {
@@ -312,13 +509,8 @@ function populateRoleDataViews() {
     fillSelectFromObjects(elements.adminClassSelect, classLabels);
     preloadAdminSelection();
 
-    if (currentUser.role === 'teacher') {
-        refreshTeacherPanel();
-    }
-
-    if (currentUser.role === 'student') {
-        elements.studentBatchView.value = currentUser.batch || elements.studentBatchView.value;
-        populateStudentClasses();
+    if (currentUser.role) {
+        setActiveDashboardView(activeDashboardView);
     }
 }
 
@@ -356,8 +548,6 @@ async function saveAdminUpdate() {
     const id = elements.adminClassSelect.value;
     const payload = {
         id,
-        actorRole: 'admin',
-        actorName: currentUser.name,
         newDay: elements.adminDaySelect.value,
         newTimeSlot: elements.adminSlotSelect.value,
         newBatch: elements.adminBatchSelect.value,
@@ -387,7 +577,7 @@ async function refreshTeacherPanel() {
         : '<div class="empty-state">No classes assigned.</div>';
 
     try {
-        const response = await fetch(`${API_BASE}/requests/teacher?teacher=${encodeURIComponent(currentUser.name)}`);
+        const response = await authFetch(`${API_BASE}/requests/teacher`);
         const requests = await response.json();
 
         if (!response.ok) {
@@ -414,8 +604,6 @@ async function saveTeacherUpdate() {
     const id = elements.teacherClassSelect.value;
     const payload = {
         id,
-        actorRole: 'teacher',
-        actorName: currentUser.name,
         newDay: elements.teacherDaySelect.value,
         newTimeSlot: elements.teacherSlotSelect.value,
         newBatch: elements.teacherBatchSelect.value,
@@ -427,7 +615,7 @@ async function saveTeacherUpdate() {
 async function updateClassByApi(payload, successMessage) {
     try {
         setStatus('Saving update...', 'loading');
-        const response = await fetch(`${API_BASE}/timetable/update`, {
+        const response = await authFetch(`${API_BASE}/timetable/update`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
@@ -476,7 +664,7 @@ async function submitStudentRequest() {
 
     try {
         setStatus('Submitting request...', 'loading');
-        const response = await fetch(`${API_BASE}/requests`, {
+        const response = await authFetch(`${API_BASE}/requests`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
@@ -528,12 +716,11 @@ function renderTeacherRequests(requests) {
 async function handleTeacherDecision(requestId, action) {
     try {
         setStatus('Applying request decision...', 'loading');
-        const response = await fetch(`${API_BASE}/requests/${encodeURIComponent(requestId)}/decision`, {
+        const response = await authFetch(`${API_BASE}/requests/${encodeURIComponent(requestId)}/decision`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 decision: action === 'approve' ? 'approved' : 'rejected',
-                teacher: currentUser.name,
             }),
         });
 
@@ -559,7 +746,7 @@ async function regenerateTimetable() {
     elements.regenerateBtn.disabled = true;
 
     try {
-        const response = await fetch(`${API_BASE}/timetable/generate`, {
+        const response = await authFetch(`${API_BASE}/timetable/generate`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
         });
@@ -580,6 +767,17 @@ async function regenerateTimetable() {
 }
 
 function renderCurrentView() {
+    if (renderRafId !== null) {
+        return;
+    }
+
+    renderRafId = window.requestAnimationFrame(() => {
+        renderRafId = null;
+        renderCurrentViewNow();
+    });
+}
+
+function renderCurrentViewNow() {
     const classes = getFilteredClasses();
     renderScheduleGrid(classes);
 }
@@ -646,7 +844,7 @@ function renderScheduleGrid(classes) {
 
     const thead = document.createElement('thead');
     const headerRow = document.createElement('tr');
-    headerRow.innerHTML = `<th class="day-col">DAY / TIME</th>${slots.map((slot) => `<th>${escapeHtml(slot)}</th>`).join('')}`;
+    headerRow.innerHTML = `<th class="day-col">DAY / TIME</th>${slots.map((slot) => `<th class="slot-header" data-slot="${escapeHtml(slot)}">${escapeHtml(slot)}</th>`).join('')}`;
     thead.appendChild(headerRow);
     table.appendChild(thead);
 
@@ -664,10 +862,6 @@ function renderScheduleGrid(classes) {
             td.className = 'slot-cell';
             td.dataset.day = day;
             td.dataset.slot = slot;
-
-            td.addEventListener('dragover', onDragOverCell);
-            td.addEventListener('dragleave', onDragLeaveCell);
-            td.addEventListener('drop', onDropOnCell);
 
             const key = `${day}||${slot}`;
             const items = classesByCell.get(key) || [];
@@ -692,6 +886,60 @@ function renderScheduleGrid(classes) {
     table.appendChild(tbody);
     elements.scheduleGrid.innerHTML = '';
     elements.scheduleGrid.appendChild(table);
+}
+
+function getSlotCellFromEvent(event) {
+    const cell = event.target.closest('.slot-cell');
+    if (!cell || !elements.scheduleGrid.contains(cell)) {
+        return null;
+    }
+    return cell;
+}
+
+function onGridDragOver(event) {
+    const cell = getSlotCellFromEvent(event);
+    if (!cell) {
+        return;
+    }
+
+    if (!draggedClassId) {
+        return;
+    }
+
+    const currentClass = allClasses.find((cls) => cls.id === draggedClassId);
+    if (!currentClass || !canDragClass(currentClass)) {
+        return;
+    }
+
+    if (!cell.classList.contains('slot-cell-active')) {
+        return;
+    }
+
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+    cell.classList.add('drop-target');
+}
+
+function onGridDragLeave(event) {
+    const cell = getSlotCellFromEvent(event);
+    if (!cell) {
+        return;
+    }
+
+    const related = event.relatedTarget;
+    if (related && cell.contains(related)) {
+        return;
+    }
+
+    cell.classList.remove('drop-target');
+}
+
+function onGridDrop(event) {
+    const cell = getSlotCellFromEvent(event);
+    if (!cell) {
+        return;
+    }
+    onDropOnCell(event, cell);
 }
 
 function createClassCard(cls) {
@@ -727,7 +975,7 @@ function createClassCard(cls) {
             event.dataTransfer.effectAllowed = 'move';
             card.classList.add('dragging');
             document.body.classList.add('drag-active');
-            markDroppableCells();
+            markDroppableCells(cls);
         });
 
         card.addEventListener('dragend', () => {
@@ -741,11 +989,6 @@ function createClassCard(cls) {
         card.classList.add('locked');
     }
 
-    card.addEventListener('contextmenu', (event) => {
-        event.preventDefault();
-        promptBatchNotification(cls);
-    });
-
     card.addEventListener('click', () => {
         openClassDetails(cls);
     });
@@ -754,12 +997,24 @@ function createClassCard(cls) {
 }
 
 function openClassDetails(cls) {
+    modalClassId = cls.id;
+    modalSelectedOption = null;
+    modalUpdatedClass = null;
+
     elements.detailSubject.textContent = String(cls.course || '-');
     elements.detailTeacher.textContent = String(cls.faculty || '-');
     elements.detailVenue.textContent = String(cls.room || '-');
     elements.detailBatch.textContent = String(cls.batch || '-');
     elements.detailDay.textContent = String(cls.day || '-');
     elements.detailTime.textContent = String(cls.timeSlot || '-');
+
+    const canReschedule = currentUser.role === 'admin' || isOwnedByCurrentTeacher(cls);
+    elements.reschedulePanel.classList.toggle('hidden', !canReschedule);
+
+    if (canReschedule) {
+        renderRescheduleOptionsLoading('Loading valid slots...');
+        loadRescheduleOptionsForClass(cls);
+    }
 
     elements.classDetailModal.classList.remove('hidden');
     elements.classDetailModal.setAttribute('aria-hidden', 'false');
@@ -768,6 +1023,289 @@ function openClassDetails(cls) {
 function closeClassDetails() {
     elements.classDetailModal.classList.add('hidden');
     elements.classDetailModal.setAttribute('aria-hidden', 'true');
+    modalClassId = null;
+    modalSelectedOption = null;
+    modalUpdatedClass = null;
+    modalRescheduleOptions = [];
+    if (elements.rescheduleReasonInput) {
+        elements.rescheduleReasonInput.value = '';
+    }
+}
+
+function getModalClass() {
+    if (!modalClassId) {
+        return null;
+    }
+    return allClasses.find((c) => c.id === modalClassId) || null;
+}
+
+function renderRescheduleOptionsLoading(message) {
+    elements.rescheduleHint.textContent = message;
+    elements.rescheduleOptions.innerHTML = '<div class="suggestion-loading">Please wait...</div>';
+    elements.rescheduleDayFilter.innerHTML = '<option value="">Loading days...</option>';
+    elements.rescheduleDayFilter.disabled = true;
+    elements.confirmRescheduleBtn.disabled = true;
+    elements.sendRescheduleMailBtn.disabled = true;
+}
+
+function getVenueTypeFromRoom(roomName) {
+    const room = String(roomName || '').toUpperCase();
+    if (room.includes('CL')) {
+        return 'lab';
+    }
+    if (room.includes('LT')) {
+        return 'lecture';
+    }
+    return 'other';
+}
+
+function isRoomTypeCompatible(sourceRoom, candidateRoom) {
+    const sourceType = getVenueTypeFromRoom(sourceRoom);
+    if (sourceType === 'other') {
+        return true;
+    }
+    return getVenueTypeFromRoom(candidateRoom) === sourceType;
+}
+
+function renderRescheduleDayFilter(options) {
+    const daySet = new Set(options.map((opt) => opt.day).filter(Boolean));
+    const orderedDays = DEFAULT_DAYS.filter((day) => daySet.has(day));
+    const extraDays = Array.from(daySet).filter((day) => !orderedDays.includes(day));
+    const days = [...orderedDays, ...extraDays];
+
+    elements.rescheduleDayFilter.innerHTML = '';
+    days.forEach((day) => {
+        const option = document.createElement('option');
+        option.value = day;
+        option.textContent = day;
+        elements.rescheduleDayFilter.appendChild(option);
+    });
+
+    elements.rescheduleDayFilter.disabled = days.length === 0;
+}
+
+function renderRescheduleSlotsForSelectedDay() {
+    const selectedDay = elements.rescheduleDayFilter.value;
+    const options = modalRescheduleOptions.filter((opt) => opt.day === selectedDay);
+
+    if (!options.length) {
+        elements.rescheduleHint.textContent = 'No valid slots found for the selected day.';
+        elements.rescheduleOptions.innerHTML = '<div class="suggestion-loading">No options available.</div>';
+        elements.confirmRescheduleBtn.disabled = true;
+        elements.sendRescheduleMailBtn.disabled = true;
+        return;
+    }
+
+    elements.rescheduleHint.textContent = `Choose a slot for ${selectedDay}, then confirm reschedule.`;
+    elements.rescheduleOptions.innerHTML = options
+        .map((opt, index) => `
+            <button
+                type="button"
+                class="suggestion-card"
+                data-index="${index}"
+                data-day="${escapeHtml(opt.day)}"
+                data-slot="${escapeHtml(opt.timeSlot)}"
+                data-room="${escapeHtml(opt.room)}"
+            >
+                <span class="s-day">${escapeHtml(opt.day)}</span>
+                <span class="s-slot">${escapeHtml(opt.timeSlot)}</span>
+                <span class="s-room">${escapeHtml(opt.room)}</span>
+            </button>
+        `)
+        .join('');
+
+    elements.rescheduleOptions.querySelectorAll('.suggestion-card').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            elements.rescheduleOptions
+                .querySelectorAll('.suggestion-card')
+                .forEach((node) => node.classList.remove('is-selected'));
+            btn.classList.add('is-selected');
+
+            modalSelectedOption = {
+                day: btn.dataset.day,
+                timeSlot: btn.dataset.slot,
+                room: btn.dataset.room,
+            };
+
+            elements.confirmRescheduleBtn.disabled = false;
+            elements.sendRescheduleMailBtn.disabled = true;
+            elements.rescheduleHint.textContent = `Selected: ${modalSelectedOption.day} | ${modalSelectedOption.timeSlot} | ${modalSelectedOption.room}`;
+        });
+    });
+
+    elements.confirmRescheduleBtn.disabled = true;
+    elements.sendRescheduleMailBtn.disabled = true;
+}
+
+function renderRescheduleOptionsList(options, sourceClass) {
+    modalSelectedOption = null;
+
+    const compatibleOptions = (options || []).filter((opt) =>
+        isRoomTypeCompatible(sourceClass?.room, opt.room)
+    );
+
+    modalRescheduleOptions = compatibleOptions;
+    renderRescheduleDayFilter(compatibleOptions);
+
+    if (!compatibleOptions.length) {
+        elements.rescheduleHint.textContent = 'No valid slots found after room-type filter (CL->CL, LT->LT).';
+        elements.rescheduleOptions.innerHTML = '<div class="suggestion-loading">No compatible options.</div>';
+        elements.confirmRescheduleBtn.disabled = true;
+        elements.sendRescheduleMailBtn.disabled = true;
+        return;
+    }
+
+    if (!elements.rescheduleDayFilter.value) {
+        elements.rescheduleDayFilter.value = compatibleOptions[0].day;
+    }
+
+    renderRescheduleSlotsForSelectedDay();
+}
+
+function onRescheduleDayFilterChange() {
+    modalSelectedOption = null;
+    elements.confirmRescheduleBtn.disabled = true;
+    elements.sendRescheduleMailBtn.disabled = true;
+    renderRescheduleSlotsForSelectedDay();
+}
+
+async function loadRescheduleOptionsForClass(cls) {
+    try {
+        const response = await authFetch(`${API_BASE}/reschedule/suggest`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id: cls.id,
+                day: cls.day,
+                timeSlot: cls.timeSlot,
+                room: cls.room,
+                faculty: cls.faculty,
+                batch: cls.batch,
+                course: cls.course,
+            }),
+        });
+
+        const result = await response.json();
+        if (!response.ok) {
+            throw new Error(result.error || 'Failed to fetch reschedule options');
+        }
+
+        renderRescheduleOptionsList(result.options || [], cls);
+    } catch (error) {
+        elements.rescheduleHint.textContent = error.message || 'Unable to load options';
+        elements.rescheduleOptions.innerHTML = '<div class="suggestion-loading">Could not load options.</div>';
+        elements.rescheduleDayFilter.innerHTML = '<option value="">Unavailable</option>';
+        elements.rescheduleDayFilter.disabled = true;
+        elements.confirmRescheduleBtn.disabled = true;
+        elements.sendRescheduleMailBtn.disabled = true;
+    }
+}
+
+async function confirmClassRescheduleFromModal() {
+    const cls = getModalClass();
+    if (!cls || !modalSelectedOption) {
+        setStatus('Select a slot first', 'error');
+        return;
+    }
+
+    try {
+        setStatus('Confirming reschedule...', 'loading');
+        elements.confirmRescheduleBtn.disabled = true;
+
+        const response = await authFetch(`${API_BASE}/reschedule/confirm`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id: cls.id,
+                course: cls.course,
+                faculty: cls.faculty,
+                newDay: modalSelectedOption.day,
+                newTimeSlot: modalSelectedOption.timeSlot,
+                newRoom: modalSelectedOption.room,
+            }),
+        });
+
+        const result = await response.json();
+        if (!response.ok) {
+            throw new Error(result.error || 'Reschedule failed');
+        }
+
+        modalUpdatedClass = result.updatedClass;
+        updateLocalClass(result.updatedClass);
+        showEmailPreview(result.updatedClass);
+
+        elements.detailDay.textContent = String(result.updatedClass.day || '-');
+        elements.detailTime.textContent = String(result.updatedClass.timeSlot || '-');
+        elements.detailVenue.textContent = String(result.updatedClass.room || '-');
+
+        elements.rescheduleHint.textContent = 'Reschedule saved. You can now send the notification mail.';
+        elements.sendRescheduleMailBtn.disabled = false;
+        setStatus('Class rescheduled successfully', 'ok');
+    } catch (error) {
+        elements.confirmRescheduleBtn.disabled = false;
+        setStatus(error.message || 'Reschedule failed', 'error');
+    }
+}
+
+async function sendRescheduleMailFromModal() {
+    const cls = modalUpdatedClass || getModalClass();
+    if (!cls) {
+        setStatus('No class selected for sending mail', 'error');
+        return;
+    }
+
+    const recipientEmail = elements.rescheduleRecipientEmail.value.trim();
+    const rescheduleReason = (elements.rescheduleReasonInput?.value || '').trim();
+    if (!recipientEmail) {
+        setStatus('Recipient email is required', 'error');
+        return;
+    }
+
+    try {
+        setStatus('Sending mail notification...', 'loading');
+        elements.sendRescheduleMailBtn.disabled = true;
+
+        const response = await authFetch(`${API_BASE}/notifications/reschedule`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                classId: cls.id,
+                recipientEmail,
+            }),
+        });
+
+        const result = await response.json();
+        if (!response.ok) {
+            throw new Error(result.error || 'Notification API failed');
+        }
+
+        const mailDraftWithReason = addReasonToMailDraft(result.mailDraft, rescheduleReason);
+        const sent = await sendUsingConfiguredEmailService(mailDraftWithReason, cls);
+        if (!sent) {
+            throw new Error('Mail service send failed. Verify EmailJS configuration.');
+        }
+
+        setStatus('Mail sent successfully', 'ok');
+        window.alert(`Mail sent to ${result.mailDraft?.to || recipientEmail}.`);
+    } catch (error) {
+        elements.sendRescheduleMailBtn.disabled = false;
+        setStatus(error.message || 'Failed to send mail', 'error');
+    }
+}
+
+function addReasonToMailDraft(mailDraft, reasonText) {
+    if (!mailDraft) {
+        return mailDraft;
+    }
+
+    if (!reasonText) {
+        return mailDraft;
+    }
+
+    return {
+        ...mailDraft,
+        body: `${mailDraft.body || ''}\n\nReason for reschedule:\n${reasonText}`,
+    };
 }
 
 function getSubjectColor(course) {
@@ -813,26 +1351,7 @@ function compactBatchLabel(batchValue) {
     return `${shortenLabel(parts[0], 10)} +${parts.length - 1}`;
 }
 
-function onDragOverCell(event) {
-    if (!draggedClassId) {
-        return;
-    }
-
-    const currentClass = allClasses.find((cls) => cls.id === draggedClassId);
-    if (!currentClass || !canDragClass(currentClass)) {
-        return;
-    }
-
-    event.preventDefault();
-    event.dataTransfer.dropEffect = 'move';
-    event.currentTarget.classList.add('drop-target');
-}
-
-function onDragLeaveCell(event) {
-    event.currentTarget.classList.remove('drop-target');
-}
-
-async function onDropOnCell(event) {
+async function onDropOnCell(event, targetCell) {
     event.preventDefault();
 
     if (currentUser.role !== 'admin' && currentUser.role !== 'teacher') {
@@ -840,7 +1359,6 @@ async function onDropOnCell(event) {
         return;
     }
 
-    const targetCell = event.currentTarget;
     const newDay = targetCell.dataset.day;
     const newTimeSlot = targetCell.dataset.slot;
     targetCell.classList.remove('drop-target');
@@ -864,36 +1382,71 @@ async function onDropOnCell(event) {
         return;
     }
 
+    const blockedReason = getDropBlockReason(currentClass, newDay, newTimeSlot);
+    if (blockedReason) {
+        setStatus(blockedReason, 'error');
+        return;
+    }
+
     if (currentClass.day === newDay && currentClass.timeSlot === newTimeSlot) {
         return;
     }
 
-    setStatus('Saving class move...', 'loading');
+    const staged = {
+        ...currentClass,
+        day: newDay,
+        timeSlot: newTimeSlot,
+    };
+
+    allClasses = allClasses.map((cls) => (cls.id === classId ? staged : cls));
+    pendingDragMoves.set(classId, {
+        id: classId,
+        newDay,
+        newTimeSlot,
+    });
+
+    refreshPendingMovesUI();
+    renderCurrentView();
+    populateRoleDataViews();
+    setStatus('Move staged locally. Click Save Drag Changes to persist.', 'loading');
+}
+
+async function savePendingDragChanges() {
+    if (!(currentUser.role === 'admin' || currentUser.role === 'teacher')) {
+        setStatus('Only admin or teacher can save drag changes', 'error');
+        return;
+    }
+
+    const moves = Array.from(pendingDragMoves.values());
+    if (!moves.length) {
+        setStatus('No pending drag changes', 'ok');
+        return;
+    }
 
     try {
-        const response = await fetch(`${API_BASE}/timetable/move`, {
+        setStatus(`Saving ${moves.length} drag changes...`, 'loading');
+        elements.saveDragBtn.disabled = true;
+
+        const response = await authFetch(`${API_BASE}/timetable/move/batch`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id: classId,
-                newDay,
-                newTimeSlot,
-                actorRole: currentUser.role,
-                actorName: currentUser.name,
-            }),
+            body: JSON.stringify({ moves }),
         });
 
         const result = await response.json();
         if (!response.ok) {
-            throw new Error(result.error || `Failed with status ${response.status}`);
+            throw new Error(result.error || 'Failed to save drag changes');
         }
 
-        updateLocalClass(result.updatedClass);
-        setStatus('Class updated and saved', 'ok');
-        showEmailPreview(result.updatedClass);
+        allClasses = result.timetable || allClasses;
+        pendingDragMoves.clear();
+        refreshPendingMovesUI();
+        renderCurrentView();
         populateRoleDataViews();
+        setStatus(`Saved ${result.savedCount || 0} drag changes`, 'ok');
     } catch (error) {
-        setStatus(error.message || 'Move failed', 'error');
+        setStatus(error.message || 'Failed to save drag changes', 'error');
+        refreshPendingMovesUI();
     }
 }
 
@@ -921,69 +1474,6 @@ function isOwnedByCurrentTeacher(cls) {
 
 function normalizePersonName(value) {
     return String(value || '').trim().toLowerCase().replace(/\s+/g, ' ');
-}
-
-async function promptBatchNotification(cls) {
-    if (currentUser.role !== 'admin' && currentUser.role !== 'teacher') {
-        setStatus('Only admin/teacher can send class notifications', 'error');
-        return;
-    }
-
-    if (currentUser.role === 'teacher' && !isOwnedByCurrentTeacher(cls)) {
-        setStatus('You can notify only for your own classes', 'error');
-        return;
-    }
-
-    const wantsToSend = window.confirm(
-        `Send automated reschedule mail to ${cls.batch} for ${cls.course}?\n\n` +
-        `Schedule: ${cls.day} | ${cls.timeSlot} | ${cls.room}`
-    );
-
-    if (!wantsToSend) {
-        return;
-    }
-
-    const recipientEmail = window.prompt(
-        'Enter recipient email for this notification:',
-        'aryansuneja121@gmail.com'
-    );
-
-    if (!recipientEmail || !recipientEmail.trim()) {
-        setStatus('Notification cancelled: no email entered', 'error');
-        return;
-    }
-
-    try {
-        setStatus('Sending notification mail...', 'loading');
-        const response = await fetch(`${API_BASE}/notifications/reschedule`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                classId: cls.id,
-                recipientEmail: recipientEmail.trim(),
-                actorRole: currentUser.role,
-                actorName: currentUser.name,
-            }),
-        });
-
-        const result = await response.json();
-        if (!response.ok) {
-            throw new Error(result.error || 'Failed to send notification');
-        }
-
-        const sentViaService = await sendUsingConfiguredEmailService(result.mailDraft, cls);
-        if (sentViaService) {
-            setStatus(`Automated mail sent to ${result.mailDraft?.to || recipientEmail}`, 'ok');
-            window.alert(`Automated mail sent successfully to ${result.mailDraft?.to || recipientEmail}.`);
-            return;
-        }
-
-        setStatus(result.message || 'Notification prepared', 'ok');
-        openMailCompose(result.mailDraft);
-        window.alert(`Mail draft prepared for ${result.mailDraft?.to || recipientEmail}.`);
-    } catch (error) {
-        setStatus(error.message || 'Notification failed', 'error');
-    }
 }
 
 function getEmailServiceConfig() {
@@ -1037,29 +1527,97 @@ async function sendUsingConfiguredEmailService(mailDraft, cls) {
     }
 }
 
-function openMailCompose(mailDraft) {
-    if (!mailDraft || !mailDraft.to || !mailDraft.subject || !mailDraft.body) {
-        return;
+function getDropBlockReason(cls, newDay, newTimeSlot) {
+    if (!cls) {
+        return 'Class data not found';
     }
 
-    const to = encodeURIComponent(mailDraft.to);
-    const subject = encodeURIComponent(mailDraft.subject);
-    const body = encodeURIComponent(mailDraft.body);
-
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`;
-    const gmailPopup = window.open(gmailUrl, '_blank');
-
-    if (!gmailPopup) {
-        window.location.href = `mailto:${mailDraft.to}?subject=${subject}&body=${body}`;
+    if (cls.day === newDay && cls.timeSlot === newTimeSlot) {
+        return 'Class is already scheduled in this slot';
     }
+
+    const classId = cls.id;
+    const faculty = cls.faculty;
+    const batch = cls.batch;
+
+    for (const other of allClasses) {
+        if (other.id === classId) {
+            continue;
+        }
+        if (other.day !== newDay || other.timeSlot !== newTimeSlot) {
+            continue;
+        }
+        if (other.faculty === faculty) {
+            return 'Faculty conflict at target slot';
+        }
+        if (other.batch === batch) {
+            return 'Batch conflict at target slot';
+        }
+    }
+
+    const teacherSlots = new Set();
+    for (const other of allClasses) {
+        if (other.id === classId) {
+            continue;
+        }
+        if (other.faculty === faculty && other.day === newDay) {
+            teacherSlots.add(other.timeSlot);
+        }
+    }
+    teacherSlots.add(newTimeSlot);
+
+    if (teacherSlots.size > 4) {
+        return 'Teacher daily workload exceeded (max 4 classes/day)';
+    }
+
+    return null;
 }
 
-function markDroppableCells() {
-    document.querySelectorAll('.slot-cell').forEach((cell) => cell.classList.add('slot-cell-active'));
+function canDropClassInCell(cls, day, slot) {
+    return !getDropBlockReason(cls, day, slot);
+}
+
+function markDroppableCells(sourceClass) {
+    const slotCells = document.querySelectorAll('.slot-cell');
+    const activeSlots = new Set();
+
+    slotCells.forEach((cell) => {
+        cell.classList.remove('slot-cell-active', 'slot-cell-blocked', 'slot-column-active');
+
+        const day = cell.dataset.day;
+        const slot = cell.dataset.slot;
+        const allowed = canDropClassInCell(sourceClass, day, slot);
+
+        if (allowed) {
+            cell.classList.add('slot-cell-active');
+            activeSlots.add(slot);
+        } else {
+            cell.classList.add('slot-cell-blocked');
+        }
+    });
+
+    document.querySelectorAll('.slot-header').forEach((header) => {
+        header.classList.remove('slot-header-active');
+        if (activeSlots.has(header.dataset.slot)) {
+            header.classList.add('slot-header-active');
+        }
+    });
+
+    slotCells.forEach((cell) => {
+        if (activeSlots.has(cell.dataset.slot)) {
+            cell.classList.add('slot-column-active');
+        }
+    });
 }
 
 function clearDroppableCells() {
-    document.querySelectorAll('.slot-cell-active').forEach((cell) => cell.classList.remove('slot-cell-active'));
+    document
+        .querySelectorAll('.slot-cell-active, .slot-cell-blocked, .slot-column-active')
+        .forEach((cell) => cell.classList.remove('slot-cell-active', 'slot-cell-blocked', 'slot-column-active'));
+
+    document
+        .querySelectorAll('.slot-header-active')
+        .forEach((header) => header.classList.remove('slot-header-active'));
 }
 
 function clearDropHighlights() {
@@ -1085,6 +1643,11 @@ function updateLocalClass(updatedClass) {
         }
         return cls;
     });
+
+    if (pendingDragMoves.has(updatedClass.id)) {
+        pendingDragMoves.delete(updatedClass.id);
+        refreshPendingMovesUI();
+    }
 
     renderCurrentView();
     updateMeta(allClasses);
@@ -1138,7 +1701,11 @@ function startLiveSync() {
 
     liveSyncTimer = setInterval(async () => {
         try {
-            const response = await fetch(`${API_BASE}/timetable`);
+            if (pendingDragMoves.size > 0) {
+                return;
+            }
+
+            const response = await authFetch(`${API_BASE}/timetable`);
             if (!response.ok) {
                 return;
             }
