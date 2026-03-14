@@ -91,6 +91,54 @@ python app.py
 http://127.0.0.1:5000
 ```
 
+## How To Use The App
+
+### 1) Login flow
+
+- Open the app in your browser.
+- Select role and login:
+  - Admin: use name admin
+  - Teacher: use a teacher name already present in timetable data
+  - Student: provide your name and a valid batch
+
+### 2) View timetable
+
+- The UI loads timetable and metadata from:
+  - GET /api/timetable
+  - GET /api/meta
+
+### 3) Move or update a class (admin/teacher)
+
+- Drag-and-drop or edit a class from the UI.
+- Backend validates:
+  - No faculty conflict at same day/time
+  - No batch conflict at same day/time
+  - Teacher daily workload cap
+  - Room availability
+- Successful updates are saved to backend/timetable_cleaned.json.
+
+### 4) Get reschedule suggestions
+
+- Send class details to POST /api/reschedule/suggest.
+- System returns ranked valid alternatives (day, timeSlot, room).
+
+### 5) Confirm a reschedule
+
+- Submit selected slot to POST /api/reschedule/confirm.
+- Updated class is persisted and notification content is generated.
+
+### 6) Student shift request flow
+
+- Student creates request with POST /api/requests.
+- Request is sent to teacher only if support ratio is above 50%.
+- Teacher checks requests via GET /api/requests/teacher.
+- Teacher approves/rejects via POST /api/requests/<request_id>/decision.
+
+### 7) Send reschedule notification
+
+- Admin/teacher can call POST /api/notifications/reschedule.
+- API returns a mail draft payload for the affected batch.
+
 ## Notes
 
 - The legacy random generation endpoint is intentionally disabled.
