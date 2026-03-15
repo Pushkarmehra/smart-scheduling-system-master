@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- SheetJS for Excel/CSV parsing -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
     <div class="bg-glow bg-glow-1"></div>
@@ -21,28 +23,80 @@
                     <button id="back-dashboard-btn" class="ghost-btn" type="button">Back to Dashboard</button>
                 </div>
             </div>
-            <p class="modal-subtext">Enter full class details in table format. Data will be structured and sent to your local LLM for timetable generation.</p>
+            <p class="modal-subtext">Enter subject details manually or import a CSV / Excel file. Llama will intelligently assign time slots — no need to specify them.</p>
 
+            <!-- Constraints -->
             <div class="form-grid">
                 <label>
-                    Food Break Slots Per Day (1-2)
+                    Food Break Slots Per Day (1–2)
                     <input type="number" id="food-break-slots" min="1" max="2" value="1">
                 </label>
-                <label>
+                <label class="full-width">
                     Additional Constraints
-                    <input type="text" id="additional-constraints" placeholder="Example: avoid back-to-back practical sessions">
+                    <textarea id="additional-constraints" rows="2" placeholder="e.g. avoid back-to-back practicals; schedule CSE-A labs only on Tuesday and Thursday; keep Dr. Smith free on Fridays"></textarea>
                 </label>
             </div>
 
+            <!-- CSV / Excel Import -->
+            <div class="import-section editor-box">
+                <div class="import-header">
+                    <div>
+                        <h3 class="import-title">Import from CSV / Excel</h3>
+                        <p class="modal-subtext" style="margin:0.3rem 0 0;">
+                            Accepted columns (any order, aliases supported):
+                            <span class="col-badge">subjectName</span>
+                            <span class="col-badge">subjectTeacher</span>
+                            <span class="col-badge">batch</span>
+                            <span class="col-badge">day</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="import-controls">
+                    <label class="file-upload-label" id="file-upload-label">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+                        <span id="file-label-text">Choose .csv, .xlsx or .xls file</span>
+                        <input type="file" id="csv-file-input" accept=".csv,.xlsx,.xls" style="display:none">
+                    </label>
+                    <button id="use-imported-btn" class="primary-btn" type="button" disabled>Use as Input Rows</button>
+                    <button id="clear-import-btn" class="ghost-btn" type="button">Clear Import</button>
+                </div>
+                <div id="import-status" class="import-status hidden"></div>
+                <div id="import-preview-section" class="hidden">
+                    <div class="import-preview-header">
+                        <strong><span id="import-row-count">0</span> rows detected</strong>
+                        <span class="import-hint">Click "Use as Input Rows" to load these into the table below.</span>
+                    </div>
+                    <div class="table-wrap generator-table-wrap">
+                        <table class="generator-table preview-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Subject Name</th>
+                                    <th>Subject Teacher</th>
+                                    <th>Batch</th>
+                                    <th>Day</th>
+                                </tr>
+                            </thead>
+                            <tbody id="import-preview-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manual entry table -->
+            <div class="manual-entry-header">
+                <h3 class="section-label">Manual Input</h3>
+                <p class="modal-subtext" style="margin:0;">Add, edit or remove rows. Llama will assign time slots automatically.</p>
+            </div>
             <div class="table-wrap generator-table-wrap">
                 <table class="generator-table" id="subject-table">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Subject Name</th>
                             <th>Subject Teacher</th>
                             <th>Batch</th>
-                            <th>Day</th>
-                            <th>Time Slot</th>
+                            <th>Preferred Day</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -51,31 +105,52 @@
             </div>
 
             <div class="action-row">
-                <button id="add-row-btn" class="ghost-btn" type="button">Add Subject Row</button>
-                <button id="generate-table-btn" class="primary-btn" type="button">Generate Timetable</button>
+                <button id="add-row-btn" class="ghost-btn" type="button">+ Add Row</button>
+                <button id="generate-table-btn" class="primary-btn" type="button">&#9889; Generate Timetable with AI</button>
             </div>
 
-            <div id="generated-preview-section" class="editor-box hidden">
-                <h3>Generated Timetable Preview</h3>
-                <p class="modal-subtext">Review this table. If it looks good, click Set as Original Timetable.</p>
-                <div class="table-wrap generator-table-wrap">
-                    <table class="generator-table" id="generated-preview-table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Day</th>
-                                <th>Time Slot</th>
-                                <th>Course</th>
-                                <th>Teacher</th>
-                                <th>Batch</th>
-                                <th>Room</th>
-                            </tr>
-                        </thead>
-                        <tbody id="generated-preview-body"></tbody>
-                    </table>
+            <!-- Generated Preview -->
+            <div id="generated-preview-section" class="editor-box hidden generated-preview-box">
+                <div class="preview-section-head">
+                    <div>
+                        <h3 style="margin:0 0 0.3rem;">Generated Timetable</h3>
+                        <p class="modal-subtext" style="margin:0;">Review the AI-generated schedule. Switch between views, then apply if satisfied.</p>
+                    </div>
+                    <div class="preview-tabs">
+                        <button class="tab-btn tab-active" data-tab="grid" id="tab-grid-btn">&#9783; Weekly Grid</button>
+                        <button class="tab-btn" data-tab="list" id="tab-list-btn">&#9776; List View</button>
+                    </div>
                 </div>
-                <div class="action-row">
-                    <button id="apply-generated-btn" class="primary-btn" type="button" disabled>Set as Original Timetable</button>
+
+                <!-- Grid view -->
+                <div id="preview-tab-grid" class="preview-tab-content">
+                    <div class="board-wrap">
+                        <div class="schedule-grid" id="generated-grid-wrap"></div>
+                    </div>
+                </div>
+
+                <!-- List view -->
+                <div id="preview-tab-list" class="preview-tab-content hidden">
+                    <div class="table-wrap generator-table-wrap">
+                        <table class="generator-table preview-table" id="generated-preview-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Day</th>
+                                    <th>Time Slot</th>
+                                    <th>Course</th>
+                                    <th>Teacher</th>
+                                    <th>Batch</th>
+                                    <th>Room</th>
+                                </tr>
+                            </thead>
+                            <tbody id="generated-preview-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="action-row" style="margin-top:1rem;">
+                    <button id="apply-generated-btn" class="primary-btn" type="button" disabled>&#10003; Set as Official Timetable</button>
                     <button id="clear-generated-btn" class="ghost-btn" type="button">Clear Preview</button>
                 </div>
             </div>

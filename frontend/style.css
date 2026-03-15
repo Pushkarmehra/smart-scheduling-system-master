@@ -761,6 +761,244 @@ tr:hover td {
 }
 
 @media (max-width: 760px) {
+    /* ── Import section ─────────────────────────────────────────────────────── */
+    .import-section {
+        border-color: rgba(137, 183, 166, 0.4);
+        background: linear-gradient(160deg, #fffefb, #f3f8f5);
+    }
+
+    .import-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.8rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .import-title {
+        margin: 0 0 0.2rem;
+        font-size: 1.02rem;
+    }
+
+    .import-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.55rem;
+        margin-bottom: 0.7rem;
+    }
+
+    .file-upload-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.52rem 0.85rem;
+        border: 1.5px dashed #b5a492;
+        border-radius: 10px;
+        background: #fffdf9;
+        color: #5a5148;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: border-color 0.2s ease, background 0.2s ease;
+        max-width: 340px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .file-upload-label:hover {
+        border-color: var(--accent);
+        background: #fdf6ec;
+    }
+
+    .file-upload-label svg {
+        flex-shrink: 0;
+        color: var(--accent);
+    }
+
+    .import-preview-header {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin: 0.7rem 0 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .import-hint {
+        color: var(--text-soft);
+        font-size: 0.86rem;
+    }
+
+    .import-status {
+        padding: 0.45rem 0.75rem;
+        border-radius: 8px;
+        font-size: 0.88rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .import-status-ok {
+        background: rgba(95, 159, 118, 0.12);
+        color: #3a7554;
+        border: 1px solid rgba(95, 159, 118, 0.35);
+    }
+
+    .import-status-error {
+        background: rgba(208, 95, 87, 0.1);
+        color: #a0302a;
+        border: 1px solid rgba(208, 95, 87, 0.35);
+    }
+
+    .import-status-loading {
+        background: rgba(217, 163, 95, 0.12);
+        color: #7a5a1c;
+        border: 1px solid rgba(217, 163, 95, 0.4);
+    }
+
+    /* Column alias badges */
+    .col-badge {
+        display: inline-block;
+        background: rgba(217, 163, 95, 0.18);
+        border: 1px solid rgba(217, 163, 95, 0.45);
+        border-radius: 999px;
+        padding: 0.1rem 0.5rem;
+        font-size: 0.78rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        color: #5a4520;
+        margin: 0 0.15rem;
+    }
+
+    /* ── Manual entry section ────────────────────────────────────────────────── */
+    .manual-entry-header {
+        margin-top: 1.4rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .section-label {
+        font-size: 1rem;
+        margin: 0 0 0.2rem;
+    }
+
+    .row-num {
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--text-soft);
+        width: 2rem;
+    }
+
+    .remove-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+        color: var(--danger);
+        border-color: rgba(208, 95, 87, 0.35);
+    }
+
+    .remove-btn:hover {
+        background: rgba(208, 95, 87, 0.08);
+    }
+
+    /* ── Preview section header & tabs ──────────────────────────────────────── */
+    .generated-preview-box {
+        border-color: rgba(137, 183, 166, 0.55);
+        background: linear-gradient(165deg, #fffefb, #f2f8f5);
+    }
+
+    .preview-section-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.8rem;
+        margin-bottom: 0.9rem;
+    }
+
+    .preview-tabs {
+        display: flex;
+        gap: 0.4rem;
+    }
+
+    .tab-btn {
+        font-family: inherit;
+        border: 1px solid #ddd0be;
+        border-radius: 8px;
+        background: #fffdf9;
+        color: var(--text-soft);
+        padding: 0.38rem 0.8rem;
+        font-size: 0.86rem;
+        cursor: pointer;
+        transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .tab-btn:hover {
+        background: #f7eddf;
+        color: var(--text-main);
+    }
+
+    .tab-btn.tab-active {
+        background: linear-gradient(135deg, var(--accent), #e3bb88);
+        color: #3f2f1a;
+        border-color: transparent;
+        font-weight: 700;
+    }
+
+    /* ── Enhanced list view badges ──────────────────────────────────────────── */
+    .day-badge {
+        display: inline-block;
+        background: rgba(89, 140, 192, 0.14);
+        border: 1px solid rgba(89, 140, 192, 0.3);
+        border-radius: 999px;
+        padding: 0.1rem 0.55rem;
+        font-size: 0.82rem;
+        color: #2a4f72;
+        white-space: nowrap;
+    }
+
+    .slot-badge {
+        display: inline-block;
+        background: rgba(95, 159, 118, 0.12);
+        border: 1px solid rgba(95, 159, 118, 0.3);
+        border-radius: 999px;
+        padding: 0.1rem 0.55rem;
+        font-size: 0.82rem;
+        color: #2a5c40;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        white-space: nowrap;
+    }
+
+    .room-badge {
+        display: inline-block;
+        background: rgba(217, 163, 95, 0.14);
+        border: 1px solid rgba(217, 163, 95, 0.35);
+        border-radius: 999px;
+        padding: 0.1rem 0.55rem;
+        font-size: 0.82rem;
+        color: #5a4010;
+        white-space: nowrap;
+    }
+
+    /* Zebra striping for preview tables */
+    .preview-table tbody tr:nth-child(odd) td {
+        background: rgba(255, 255, 255, 0.6);
+    }
+
+    .preview-table tbody tr:nth-child(even) td {
+        background: rgba(137, 183, 166, 0.07);
+    }
+
+    .preview-table tbody tr:hover td {
+        background: rgba(217, 163, 95, 0.1);
+    }
+
+    /* Grid slot label column */
+    .slot-label {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-align: center;
+        color: #5a5048;
+        background: linear-gradient(180deg, #f8efdf, #efe3d0) !important;
+        min-width: 110px;
+    }
+
+    @media (max-width: 760px) {
     .app-shell {
         width: calc(100% - 1.1rem);
         margin-top: 1.2rem;

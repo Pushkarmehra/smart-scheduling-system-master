@@ -18,7 +18,7 @@ FRONTEND_DIR = BASE_DIR.parent / 'frontend'
 JWT_SECRET = os.environ.get('SMART_SCHED_JWT_SECRET', 'smart-scheduling-dev-secret-change-me')
 JWT_ALGORITHM = 'HS256'
 JWT_EXP_HOURS = 8
-OLLAMA_MODEL = os.environ.get('OLLAMA_MODEL', '').strip()
+OLLAMA_MODEL = os.environ.get('OLLAMA_MODEL', 'llama3').strip()
 DEFAULT_SLOT_ORDER = ['09:00-10:00', '10:00-11:00', '11:00-12:00', '13:00-14:00', '14:00-15:00']
 DAY_MAP = {
     'MON': 'Monday',
@@ -177,25 +177,33 @@ def _build_llm_prompt_from_entries(entries, constraints):
     for index, entry in enumerate(entries, start=1):
         lines.append(
             f"{index}. Subject={entry['subjectName']}; Teacher={entry['subjectTeacher']}; "
-            f"Batch={entry['batch']}; PreferredDay={entry['day']}; PreferredTime={entry['time']}"
+            f"Batch={entry['batch']}; PreferredDay={entry['day']}"
         )
 
     food_break_slots = constraints.get('foodBreakSlotsPerDay', 1)
     additional_constraints = constraints.get('additionalConstraints') or 'None'
 
     return (
-        'Convert the following academic input rows into a valid timetable.\n'
-        'Hard constraints:\n'
-        '- No teacher overlap in the same day/time slot.\n'
-        '- No batch overlap in the same day/time slot.\n'
-        '- No room overlap in the same day/time slot.\n'
-        '- Keep mandatory food break slots per day between 1 and 2.\n'
-        '- Prefer room compatibility (CL/LAB subjects to lab rooms, LT/lecture subjects to lecture rooms).\n'
-        f'- Mandatory food break slots per day: {food_break_slots}\n'
-        f'- Additional constraints: {additional_constraints}\n\n'
-        'Input rows:\n'
+        'You are an academic timetable scheduling expert. Generate a complete, conflict-free timetable.\n\n'
+        '=== HARD RULES (must never be violated) ===\n'
+        '1. No teacher may be scheduled in two different classes at the same day and time slot.\n'
+        '2. No batch may have two classes at the same day and time slot.\n'
+        '3. No room may be used by two classes at the same day and time slot.\n'
+        '4. You MUST decide the time slots yourself. Use realistic 1-hour blocks between 09:00 and 17:00.\n'
+        '   Example slots: 09:00-10:00, 10:00-11:00, 11:00-12:00, 13:00-14:00, 14:00-15:00, 15:00-16:00, 16:00-17:00\n'
+        f'5. Reserve {food_break_slots} lunch/food break slot(s) per day (12:00-13:00 must stay free).\n'
+        '6. Assign rooms smartly: CL/LAB/Practical subjects → lab rooms (CL-xxx); Lectures → lecture rooms (LT-xxx).\n\n'
+        + (
+            f'=== ADDITIONAL CONSTRAINTS (apply these strictly) ===\n{additional_constraints}\n\n'
+            if additional_constraints and additional_constraints.lower() != 'none'
+            else ''
+        )
+        + '=== INPUT SUBJECTS (assign time slots for each) ===\n'
         + '\n'.join(lines)
-        + '\n\nReturn timetable rows in JSON with: day, timeSlot, course, faculty, batch, room.'
+        + '\n\n=== OUTPUT FORMAT ===\n'
+        'Return ONLY a raw JSON array. No markdown, no explanation, no extra text.\n'
+        'Each item must have exactly these fields: day, timeSlot, course, faculty, batch, room.\n'
+        'Example: [{"day":"Monday","timeSlot":"09:00-10:00","course":"DSA","faculty":"Dr. Sharma","batch":"CSE-A","room":"LT-101"}]'
     )
 
 
@@ -218,15 +226,9 @@ def _extract_first_json_array(text):
 
 def _try_generate_with_ollama(entries, constraints):
     if not OLLAMA_MODEL:
-        return None, 'OLLAMA_MODEL is not configured'
+        return None, 'Ollama not configured — generated using built-in optimized algorithm'
 
     prompt = _build_llm_prompt_from_entries(entries, constraints)
-    prompt += (
-        '\nStrict output format requirement:\n'
-        'Return only a JSON array. No markdown, no extra text.\n'
-        'Example item: {"day":"Monday","timeSlot":"09:00-10:00","course":"DSA","faculty":"Prof A","batch":"CSE-A","room":"LT-101"}'
-    )
-
     try:
         # Use local Ollama CLI directly so no HTTP API integration is required.
         result = subprocess.run(
@@ -308,16 +310,13 @@ def _build_optimized_timetable_from_entries(entries, constraints, room_pool):
             'subjectTeacher': str(entry.get('subjectTeacher') or '').strip(),
             'batch': str(entry.get('batch') or '').strip() or 'General',
             'day': _normalize_day(entry.get('day')),
-            'time': _normalize_time_slot(entry.get('time')),
         })
 
     day_order = sorted({item['day'] for item in normalized_entries if item['day']}, key=_day_sort_key)
     if not day_order:
         day_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
 
-    slot_order = sorted({item['time'] for item in normalized_entries if item['time']}, key=_slot_index)
-    if not slot_order:
-        slot_order = DEFAULT_SLOT_ORDER
+    slot_order = DEFAULT_SLOT_ORDER
 
     food_break_slots = constraints.get('foodBreakSlotsPerDay', 1)
     food_break_indices = set()
@@ -334,11 +333,11 @@ def _build_optimized_timetable_from_entries(entries, constraints, room_pool):
     generated = []
 
     # Prefer stable output by sorting before assignment.
-    normalized_entries.sort(key=lambda x: (x['day'], _slot_index(x['time']), x['subjectTeacher'], x['batch'], x['subjectName']))
+    normalized_entries.sort(key=lambda x: (x['day'], x['subjectTeacher'], x['batch'], x['subjectName']))
 
     for item in normalized_entries:
         preferred_day = item['day'] if item['day'] in day_order else day_order[0]
-        preferred_slot = item['time'] if item['time'] in slot_order else slot_order[0]
+        preferred_slot = slot_order[0]
         required_room_type = _infer_required_room_type(item['subjectName'])
 
         candidate_pairs = [(preferred_day, preferred_slot)]
@@ -942,7 +941,6 @@ def convert_llm_rows_to_timetable():
         subject_name = str(entry.get('subjectName') or '').strip()
         subject_teacher = str(entry.get('subjectTeacher') or '').strip()
         day = _normalize_day(entry.get('day'))
-        time = _normalize_time_slot(entry.get('time'))
 
         if not subject_name:
             return jsonify({'error': f'Entry {index}: subjectName is required'}), 400
@@ -950,8 +948,6 @@ def convert_llm_rows_to_timetable():
             return jsonify({'error': f'Entry {index}: subjectTeacher is required'}), 400
         if not day:
             return jsonify({'error': f'Entry {index}: day is required'}), 400
-        if not time or '-' not in time:
-            return jsonify({'error': f'Entry {index}: time must be in HH:MM-HH:MM format'}), 400
 
     constraints_req = req.get('constraints') if isinstance(req.get('constraints'), dict) else {}
     food_break_slots, error = _as_bounded_int(
