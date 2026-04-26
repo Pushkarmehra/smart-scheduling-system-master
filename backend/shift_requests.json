@@ -1,0 +1,19 @@
+[
+  {
+    "id": "1",
+    "classId": "297",
+    "studentName": "vns",
+    "batch": "24I11",
+    "teacher": "VNS",
+    "course": "P-25B17CI473",
+    "currentDay": "Thursday",
+    "currentTimeSlot": "15:00-15:55",
+    "preferredDay": "Saturday",
+    "preferredTimeSlot": "15:00-15:55",
+    "reason": "maja nahi aa raha kuch",
+    "supportCount": 24,
+    "classStrength": 31,
+    "supportRatio": 0.774,
+    "status": "rejected"
+  }
+]

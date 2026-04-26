@@ -1,0 +1,3778 @@
+[
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A17",
+    "Teacher": "SMA",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A17",
+    "Teacher": "SMA",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24J11",
+    "Teacher": "MGN",
+    "Venue": "CL3_2"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24J11",
+    "Teacher": "MGN",
+    "Venue": "CL3_2"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "RVS",
+    "Venue": "DLC,CR8"
+  },
+  {
+    "Day": "MON",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-24BB1HS413",
+    "Batch": "24W11",
+    "Teacher": "TGM",
+    "Venue": "TR3"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B21[24A14]",
+    "Teacher": "SSA",
+    "Venue": "CL3_1"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B21[24A14]",
+    "Teacher": "SSA",
+    "Venue": "CL3_1"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-24B17CI471",
+    "Batch": "24J12,24K11",
+    "Teacher": "RKI",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-24B17CI471",
+    "Batch": "24J12,24K11",
+    "Teacher": "RKI",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-24BB1HS411",
+    "Batch": "24W11",
+    "Teacher": "ANU",
+    "Venue": "TR1"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A15",
+    "Teacher": "PKG",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A15",
+    "Teacher": "PKG",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "SWT",
+    "Venue": "CR5"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11BT411",
+    "Batch": "24E11, 24F11",
+    "Teacher": "SML",
+    "Venue": "TR7"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11BT415",
+    "Batch": "24E11,24F11",
+    "Teacher": "JTV",
+    "Venue": "TR3"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-24B11CE412",
+    "Batch": "24D11",
+    "Teacher": "ABJ",
+    "Venue": "CR15"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24J11,24J12,24K11",
+    "Teacher": "VNS",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B1WCI431",
+    "Batch": "B2[24A14,24A15,24A16]",
+    "Teacher": "AYS",
+    "Venue": "CR8"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B1WEC431",
+    "Batch": "24B11,24H11",
+    "Teacher": "VKB",
+    "Venue": "TR4"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25BS7MA471",
+    "Batch": "24P11",
+    "Teacher": "SST",
+    "Venue": "CL1"
+  },
+  {
+    "Day": "MON",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25BS7MA471",
+    "Batch": "24P11",
+    "Teacher": "SST",
+    "Venue": "CL1"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-24BB7HS471",
+    "Batch": "24W11",
+    "Teacher": "NTJ",
+    "Venue": "CL7"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-24BB7HS471",
+    "Batch": "24W11",
+    "Teacher": "NTJ",
+    "Venue": "CL7"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "PNS",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A16",
+    "Teacher": "PKG",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "MON",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A16",
+    "Teacher": "PKG",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24I12",
+    "Teacher": "MSD",
+    "Venue": "ECL5"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24I12",
+    "Teacher": "MSD",
+    "Venue": "ECL5"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B1WBT432",
+    "Batch": "24E11",
+    "Teacher": "UDB",
+    "Venue": "CR16"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "ARV",
+    "Venue": "CR7"
+  },
+  {
+    "Day": "MON",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "T-24BBWHS431",
+    "Batch": "24W11",
+    "Teacher": "ASA",
+    "Venue": "TR3"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24A110,24L11,24N11,24C11,24I14",
+    "Teacher": "MNK",
+    "Venue": "CR6"
+  },
+  {
+    "Day": "MON",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24A110,24F11,24C11,24D11,24L11,24N11,24I14",
+    "Teacher": "PNS",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24C11, 24P11,24F11",
+    "Teacher": "AMN",
+    "Venue": "CL8_1"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24C11, 24P11,24F11",
+    "Teacher": "AMN",
+    "Venue": "CL8_1"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B1WCI431",
+    "Batch": "B3[24A17,24A18,24A19,24E11,24F11]",
+    "Teacher": "ATA",
+    "Venue": "CR7"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-24BB1HS414",
+    "Batch": "24W11",
+    "Teacher": "DLR",
+    "Venue": "TR6"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-18B11BT411",
+    "Batch": "OTO",
+    "Teacher": "HSD",
+    "Venue": "CABIN"
+  },
+  {
+    "Day": "MON",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24J11,24J12,24K11",
+    "Teacher": "MSD",
+    "Venue": "CR5"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24L11,24N11,24I14",
+    "Teacher": "SKS",
+    "Venue": "CR16"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-24B11CE414",
+    "Batch": "24D11",
+    "Teacher": "KKR",
+    "Venue": "CR14"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A11",
+    "Teacher": "AKJ",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A11",
+    "Teacher": "AKJ",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "MON",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WHS431",
+    "Batch": "",
+    "Teacher": "TGM",
+    "Venue": "CR6"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "RKI",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "MON",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "AVA",
+    "Venue": "CR7"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A12",
+    "Teacher": "HSL",
+    "Venue": "ECL3"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A12",
+    "Teacher": "HSL",
+    "Venue": "ECL3"
+  },
+  {
+    "Day": "MON",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WHS432",
+    "Batch": "",
+    "Teacher": "DLR",
+    "Venue": "CR9"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17EC471",
+    "Batch": "24B11",
+    "Teacher": "ALK",
+    "Venue": "ECL5"
+  },
+  {
+    "Day": "MON",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17EC471",
+    "Batch": "24B11",
+    "Teacher": "ALK",
+    "Venue": "ECL5"
+  },
+  {
+    "Day": "MON",
+    "Time": "05:00 PM - 05:55 PM",
+    "Subject Code": "L-25B1WCI433/25B1WCI835",
+    "Batch": "B6[From all batches],24E11,24F11,CS-IT[MCSE]BI81",
+    "Teacher": "AYS",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A11",
+    "Teacher": "ALK",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A11",
+    "Teacher": "ALK",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-24BB1HS412",
+    "Batch": "24W11",
+    "Teacher": "TNS",
+    "Venue": "TR7"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24A18",
+    "Teacher": "RVS",
+    "Venue": "CR18"
+  },
+  {
+    "Day": "MON",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WHS433",
+    "Batch": "",
+    "Teacher": "NJL",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17EC476",
+    "Batch": "24G11",
+    "Teacher": "SHR",
+    "Venue": "ECL8"
+  },
+  {
+    "Day": "MON",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17EC476",
+    "Batch": "24G11",
+    "Teacher": "SHR",
+    "Venue": "ECL8"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24J11,24J12,24K11,25W11",
+    "Teacher": "RRA",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24A110,24L11,24N11,24I14",
+    "Teacher": "PDG",
+    "Venue": "CR8"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A12",
+    "Teacher": "RBT",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A12",
+    "Teacher": "RBT",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "MON",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WHS434",
+    "Batch": "",
+    "Teacher": "RTK",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "AKJ",
+    "Venue": "CR7"
+  },
+  {
+    "Day": "MON",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "AMN",
+    "Venue": "CR6"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11BT413",
+    "Batch": "24E11",
+    "Teacher": "ABH",
+    "Venue": "TR1"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11BT414",
+    "Batch": "24E11",
+    "Teacher": "RJK",
+    "Venue": "CR19"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A13,24G11",
+    "Teacher": "PKG",
+    "Venue": "CL11"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A13,24G11",
+    "Teacher": "PKG",
+    "Venue": "CL11"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11CE411",
+    "Batch": "24D11",
+    "Teacher": "CPG",
+    "Venue": "CR13"
+  },
+  {
+    "Day": "MON",
+    "Time": "05:00 PM - 05:55 PM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "RBT",
+    "Venue": "DLC,LT3"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B13[24A13]",
+    "Teacher": "ATA",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B13[24A13]",
+    "Teacher": "ATA",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17MA471",
+    "Batch": "24P11",
+    "Teacher": "SST",
+    "Venue": "CL1"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17MA471",
+    "Batch": "24P11",
+    "Teacher": "SST",
+    "Venue": "CL1"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17C472",
+    "Batch": "24A15",
+    "Teacher": "ARV",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "MON",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17C472",
+    "Batch": "24A15",
+    "Teacher": "ARV",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B51[24I11,24I13]",
+    "Teacher": "HST",
+    "Venue": "CL1"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B51[24I11,24I13]",
+    "Teacher": "HST",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24L11,24N11,24I14",
+    "Teacher": "PDG",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24L11,24N11,24I14",
+    "Teacher": "PDG",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "MON",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11BT412",
+    "Batch": "24E11",
+    "Teacher": "AKN",
+    "Venue": "CR17"
+  },
+  {
+    "Day": "MON",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11EC412",
+    "Batch": "24B11,24G11,24H11",
+    "Teacher": "PRG",
+    "Venue": "TR2"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11EC413",
+    "Batch": "24B11,24G11",
+    "Teacher": "VKB",
+    "Venue": "CR1"
+  },
+  {
+    "Day": "MON",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24J12,24K11",
+    "Teacher": "AVA",
+    "Venue": "CR17"
+  },
+  {
+    "Day": "MON",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI416",
+    "Batch": "24H11",
+    "Teacher": "EMP",
+    "Venue": "ECL8,TR3"
+  },
+  {
+    "Day": "MON",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-24B17CE472",
+    "Batch": "24D11",
+    "Teacher": "ADP",
+    "Venue": "HILAB"
+  },
+  {
+    "Day": "MON",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-24B17CE472",
+    "Batch": "24D11",
+    "Teacher": "ADP",
+    "Venue": "HILAB"
+  },
+  {
+    "Day": "TUE",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "ALK",
+    "Venue": "CR7"
+  },
+  {
+    "Day": "TUE",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24J12,24K11",
+    "Teacher": "VNS",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "TUE",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24J12,24K11",
+    "Teacher": "VNS",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24A110,24L11,24N11,24I14",
+    "Teacher": "PDG",
+    "Venue": "CR7"
+  },
+  {
+    "Day": "TUE",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A13",
+    "Teacher": "RVS",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A13",
+    "Teacher": "RVS",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B23[24A16]",
+    "Teacher": "HRI",
+    "Venue": "CL3_2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B23[24A16]",
+    "Teacher": "HRI",
+    "Venue": "CL3_2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-24BB1HS412",
+    "Batch": "24W11",
+    "Teacher": "TNS",
+    "Venue": "TR6"
+  },
+  {
+    "Day": "TUE",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "AVA",
+    "Venue": "DLC,CR9"
+  },
+  {
+    "Day": "TUE",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11BT413",
+    "Batch": "24E11",
+    "Teacher": "ABH",
+    "Venue": "CR9"
+  },
+  {
+    "Day": "TUE",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24J11",
+    "Teacher": "ALK",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "TUE",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24J11",
+    "Teacher": "ALK",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B1WCI431",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "ATA",
+    "Venue": "CR10"
+  },
+  {
+    "Day": "TUE",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-24B11CI411",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "RKI",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "TUE",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B11[24A11]",
+    "Teacher": "ATA",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B11[24A11]",
+    "Teacher": "ATA",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24A110,24L11,24N11,24C11,24I14",
+    "Teacher": "MNK",
+    "Venue": "DLC,CR10"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "RRA",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24A110,24L11,24N11, 24I14,24C11,24P11,24F11",
+    "Teacher": "AMN",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "TUE",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11EC415",
+    "Batch": "24G11",
+    "Teacher": "HSL",
+    "Venue": "TR5"
+  },
+  {
+    "Day": "TUE",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B1WCI473",
+    "Batch": "B61[24A11,24A14,24A15,24A16,26A17,24A19]",
+    "Teacher": "AYS",
+    "Venue": "ECL7"
+  },
+  {
+    "Day": "TUE",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B1WCI473",
+    "Batch": "B61[24A11,24A14,24A15,24A16,26A17,24A19]",
+    "Teacher": "AYS",
+    "Venue": "ECL7"
+  },
+  {
+    "Day": "TUE",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24I12",
+    "Teacher": "AVA",
+    "Venue": "CL3_1"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24I12",
+    "Teacher": "AVA",
+    "Venue": "CL3_1"
+  },
+  {
+    "Day": "TUE",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B53[24J11,24J12]",
+    "Teacher": "GVN",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "TUE",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B53[24J11,24J12]",
+    "Teacher": "GVN",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "TUE",
+    "Time": "05:00 PM - 05:55 PM",
+    "Subject Code": "L-25B1WHS432",
+    "Batch": "",
+    "Teacher": "DLR",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "TUE",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-18B1WBT631",
+    "Batch": "24E11,24F11",
+    "Teacher": "GPL",
+    "Venue": "CR12"
+  },
+  {
+    "Day": "TUE",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "T-25B11CE411",
+    "Batch": "24D11",
+    "Teacher": "CPG",
+    "Venue": "TR9"
+  },
+  {
+    "Day": "TUE",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WHS431",
+    "Batch": "",
+    "Teacher": "TGM",
+    "Venue": "CR6"
+  },
+  {
+    "Day": "TUE",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "PNS",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24I11",
+    "Teacher": "AVA",
+    "Venue": "CR17"
+  },
+  {
+    "Day": "TUE",
+    "Time": "05:00 PM - 05:55 PM",
+    "Subject Code": "L-25B1WHS433",
+    "Batch": "",
+    "Teacher": "NJL",
+    "Venue": "CR5"
+  },
+  {
+    "Day": "TUE",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "AKR",
+    "Venue": "CR1"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11EC411",
+    "Batch": "24B11,24G11",
+    "Teacher": "ALK",
+    "Venue": "TR3"
+  },
+  {
+    "Day": "TUE",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-24BBWHS431",
+    "Batch": "24W11",
+    "Teacher": "ASA",
+    "Venue": "CR18"
+  },
+  {
+    "Day": "TUE",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "AMN",
+    "Venue": "CR7"
+  },
+  {
+    "Day": "TUE",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WHS432",
+    "Batch": "",
+    "Teacher": "DLR",
+    "Venue": "CR9"
+  },
+  {
+    "Day": "TUE",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11BT415",
+    "Batch": "24E11, 24F11",
+    "Teacher": "JTV",
+    "Venue": "CR12"
+  },
+  {
+    "Day": "TUE",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24A110,24F11,24C11,24D11,24L11,24N11,24I14",
+    "Teacher": "PNS",
+    "Venue": "DLC,CR2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "05:00 PM - 05:55 PM",
+    "Subject Code": "L-25B1WHS434",
+    "Batch": "",
+    "Teacher": "RTK",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24J11,24J12,24K11,24E11,24F11",
+    "Teacher": "RKI",
+    "Venue": "CR6"
+  },
+  {
+    "Day": "TUE",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-18B11CE411",
+    "Batch": "24D11",
+    "Teacher": "AKG",
+    "Venue": "CR15"
+  },
+  {
+    "Day": "TUE",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24A14",
+    "Teacher": "ARV",
+    "Venue": "TR2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WHS433",
+    "Batch": "",
+    "Teacher": "NJL",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-24BB1HS411",
+    "Batch": "24W11",
+    "Teacher": "ANU",
+    "Venue": "TR3"
+  },
+  {
+    "Day": "TUE",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A15",
+    "Teacher": "EMP",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A15",
+    "Teacher": "EMP",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "TUE",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11BT412",
+    "Batch": "24E11",
+    "Teacher": "AKN",
+    "Venue": "TR1"
+  },
+  {
+    "Day": "TUE",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WHS434",
+    "Batch": "",
+    "Teacher": "RTK",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "T-25B11EC414",
+    "Batch": "24H11",
+    "Teacher": "RKU",
+    "Venue": "TR2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B1WEC431",
+    "Batch": "24B11,24H11",
+    "Teacher": "VKB",
+    "Venue": "TR4"
+  },
+  {
+    "Day": "TUE",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-24B11CE412",
+    "Batch": "24D11",
+    "Teacher": "ABJ",
+    "Venue": "CR14"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11EC414",
+    "Batch": "24H11",
+    "Teacher": "RKU",
+    "Venue": "TR4"
+  },
+  {
+    "Day": "TUE",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B1WCI473",
+    "Batch": "24K11",
+    "Teacher": "AYS",
+    "Venue": "ECL7"
+  },
+  {
+    "Day": "TUE",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B1WCI473",
+    "Batch": "24K11",
+    "Teacher": "AYS",
+    "Venue": "ECL7"
+  },
+  {
+    "Day": "TUE",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11CI418",
+    "Batch": "24L11",
+    "Teacher": "GVN",
+    "Venue": "CR17"
+  },
+  {
+    "Day": "TUE",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24J11,24J12,24K11",
+    "Teacher": "VNS",
+    "Venue": "CR8"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-24B11CE413",
+    "Batch": "24D11",
+    "Teacher": "ADP",
+    "Venue": "CR15"
+  },
+  {
+    "Day": "TUE",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A12",
+    "Teacher": "MGN",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "TUE",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A12",
+    "Teacher": "MGN",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "TUE",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17EC475",
+    "Batch": "24G11",
+    "Teacher": "HSL",
+    "Venue": "ECL8"
+  },
+  {
+    "Day": "TUE",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17EC475",
+    "Batch": "24G11",
+    "Teacher": "HSL",
+    "Venue": "ECL8"
+  },
+  {
+    "Day": "TUE",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24I11",
+    "Teacher": "PRG",
+    "Venue": "ECL5"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24I11",
+    "Teacher": "PRG",
+    "Venue": "ECL5"
+  },
+  {
+    "Day": "TUE",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24A110,24L11,24N11,24I14,24C11,24P11,24F11",
+    "Teacher": "SKS",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-24BB1HS413",
+    "Batch": "24W11",
+    "Teacher": "TGM",
+    "Venue": "CR19"
+  },
+  {
+    "Day": "TUE",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11EC413",
+    "Batch": "24B11,24G11",
+    "Teacher": "VKB",
+    "Venue": "CR18"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B1WCI435",
+    "Batch": "24C11",
+    "Teacher": "PTK",
+    "Venue": "DLC,CR18"
+  },
+  {
+    "Day": "TUE",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "PKG",
+    "Venue": "CR5"
+  },
+  {
+    "Day": "TUE",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11BT414",
+    "Batch": "24E11",
+    "Teacher": "RJK",
+    "Venue": "TR5"
+  },
+  {
+    "Day": "TUE",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A14",
+    "Teacher": "ARV",
+    "Venue": "CL8_1"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A14",
+    "Teacher": "ARV",
+    "Venue": "CL8_1"
+  },
+  {
+    "Day": "TUE",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "NTJ",
+    "Venue": "CR6"
+  },
+  {
+    "Day": "TUE",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-24B11CI416",
+    "Batch": "24H11",
+    "Teacher": "EMP",
+    "Venue": "ECL8,TR1"
+  },
+  {
+    "Day": "TUE",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24I13",
+    "Teacher": "AKJ",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "TUE",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24I13",
+    "Teacher": "AKJ",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24I11",
+    "Teacher": "PDN",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24I11",
+    "Teacher": "PDN",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "WED",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-24B17CE471",
+    "Batch": "24D11",
+    "Teacher": "CPG",
+    "Venue": "CONCLAB"
+  },
+  {
+    "Day": "WED",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-24B17CE471",
+    "Batch": "24D11",
+    "Teacher": "CPG",
+    "Venue": "CONCLAB"
+  },
+  {
+    "Day": "WED",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A14",
+    "Teacher": "EMP",
+    "Venue": "ECL3"
+  },
+  {
+    "Day": "WED",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A14",
+    "Teacher": "EMP",
+    "Venue": "ECL3"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "PKG",
+    "Venue": "CR1"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11EC411",
+    "Batch": "24B11,24G11",
+    "Teacher": "ALK",
+    "Venue": "CR12"
+  },
+  {
+    "Day": "WED",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "ARV",
+    "Venue": "DLC,CR7"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-24BB1HS413",
+    "Batch": "24W11",
+    "Teacher": "TGM",
+    "Venue": "TR5"
+  },
+  {
+    "Day": "WED",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "MNK",
+    "Venue": "CR5"
+  },
+  {
+    "Day": "WED",
+    "Time": "05:00 PM - 05:55 PM",
+    "Subject Code": "L-25B1WHS432",
+    "Batch": "",
+    "Teacher": "DLR",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "WED",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-24B11CE414",
+    "Batch": "24D11",
+    "Teacher": "KKR",
+    "Venue": "CR14"
+  },
+  {
+    "Day": "WED",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11EC412",
+    "Batch": "24B11,24G11,24H11",
+    "Teacher": "PRG",
+    "Venue": "TR3"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B1WEC432",
+    "Batch": "24B11,24H11",
+    "Teacher": "NTJ",
+    "Venue": "ECL6"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-24BBWHS431",
+    "Batch": "24W11",
+    "Teacher": "ASA",
+    "Venue": "TR4"
+  },
+  {
+    "Day": "WED",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "RKI",
+    "Venue": "CR6"
+  },
+  {
+    "Day": "WED",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B1WCI473",
+    "Batch": "B62[24A110,24L11,24N11,24I14,24C11,24E11,24F11,24A12,24A13,24A18]",
+    "Teacher": "SKP",
+    "Venue": "ECL7"
+  },
+  {
+    "Day": "WED",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B1WCI473",
+    "Batch": "B62[24A110,24L11,24N11,24I14,24C11,24E11,24F11,24A12,24A13,24A18]",
+    "Teacher": "SKP",
+    "Venue": "ECL7"
+  },
+  {
+    "Day": "WED",
+    "Time": "05:00 PM - 05:55 PM",
+    "Subject Code": "L-25B1WHS433",
+    "Batch": "",
+    "Teacher": "NJL",
+    "Venue": "CR5"
+  },
+  {
+    "Day": "WED",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-24B11GE411",
+    "Batch": "24J11,24J12,24K11,25W11",
+    "Teacher": "RRA",
+    "Venue": "CR11"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24J11",
+    "Teacher": "SMA",
+    "Venue": "CL8_2"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24J11",
+    "Teacher": "SMA",
+    "Venue": "CL8_2"
+  },
+  {
+    "Day": "WED",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B11EC416",
+    "Batch": "24B11",
+    "Teacher": "PDG",
+    "Venue": "TR3"
+  },
+  {
+    "Day": "WED",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B1WCI431",
+    "Batch": "B62[24A110,24L11,24N11,24I14,24C11]",
+    "Teacher": "AYS",
+    "Venue": "CR8"
+  },
+  {
+    "Day": "WED",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B1WCI431",
+    "Batch": "B62[24A110,24L11,24N11,24I14,24C11]",
+    "Teacher": "AYS",
+    "Venue": "CR8"
+  },
+  {
+    "Day": "WED",
+    "Time": "05:00 PM - 05:55 PM",
+    "Subject Code": "L-25B1WHS434",
+    "Batch": "",
+    "Teacher": "RTK",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "WED",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "NTJ",
+    "Venue": "CR1"
+  },
+  {
+    "Day": "WED",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11BT412",
+    "Batch": "24E11",
+    "Teacher": "AKN",
+    "Venue": "TR2"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A110",
+    "Teacher": "VNS",
+    "Venue": "CL3_1"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A110",
+    "Teacher": "VNS",
+    "Venue": "CL3_1"
+  },
+  {
+    "Day": "WED",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "T-25B11EC412",
+    "Batch": "24B11,24G11,24H11",
+    "Teacher": "PRG",
+    "Venue": "TR4"
+  },
+  {
+    "Day": "WED",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "PNS",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "WED",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CE411",
+    "Batch": "24D11",
+    "Teacher": "CPG",
+    "Venue": "CR14"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B33[24A19]",
+    "Teacher": "HST",
+    "Venue": "CL5_1"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B33[24A19]",
+    "Teacher": "HST",
+    "Venue": "CL5_1"
+  },
+  {
+    "Day": "WED",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24J11,24J12,24K11",
+    "Teacher": "MSD",
+    "Venue": "CR8"
+  },
+  {
+    "Day": "WED",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B1WCI431",
+    "Batch": "B5[24I11,24I12,24I13,24J11,24J12,24K11]",
+    "Teacher": "RVS",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "WED",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "SRJ",
+    "Venue": "DLC,CR6"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B1WCI475",
+    "Batch": "24C11",
+    "Teacher": "PTK",
+    "Venue": "CL11"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B1WCI475",
+    "Batch": "24C11",
+    "Teacher": "PTK",
+    "Venue": "CL11"
+  },
+  {
+    "Day": "WED",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "T-24BB1HS414",
+    "Batch": "24W11",
+    "Teacher": "DLR",
+    "Venue": "CR19"
+  },
+  {
+    "Day": "WED",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A11",
+    "Teacher": "RBT",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "WED",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A11",
+    "Teacher": "RBT",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "WED",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11BT415",
+    "Batch": "24E11,24F11",
+    "Teacher": "JTV",
+    "Venue": "TR7"
+  },
+  {
+    "Day": "WED",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "SWT",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24J12,24K11",
+    "Teacher": "AVA",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24J12,24K11",
+    "Teacher": "AVA",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "WED",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "AMN",
+    "Venue": "CR7"
+  },
+  {
+    "Day": "WED",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "T-24BB1HS412",
+    "Batch": "24W11",
+    "Teacher": "TNS",
+    "Venue": "TR5"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24L11,24N11,24I14",
+    "Teacher": "SKS",
+    "Venue": "CL10"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24L11,24N11,24I14",
+    "Teacher": "SKS",
+    "Venue": "CL10"
+  },
+  {
+    "Day": "WED",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B11BT413",
+    "Batch": "24E11",
+    "Teacher": "ABH",
+    "Venue": "TR6"
+  },
+  {
+    "Day": "WED",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24J11,24J12,24K11",
+    "Teacher": "AVA",
+    "Venue": "CR9"
+  },
+  {
+    "Day": "WED",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11EC415",
+    "Batch": "24G11",
+    "Teacher": "HSL",
+    "Venue": "CR17"
+  },
+  {
+    "Day": "WED",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B1WCI431",
+    "Batch": "B3[24A17,24A18,24A19]",
+    "Teacher": "ATA",
+    "Venue": "CR1"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B11CI476",
+    "Batch": "24I12",
+    "Teacher": "RKI",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B11CI476",
+    "Batch": "24I12",
+    "Teacher": "RKI",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "WED",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A19",
+    "Teacher": "PDN",
+    "Venue": "CL11"
+  },
+  {
+    "Day": "WED",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A19",
+    "Teacher": "PDN",
+    "Venue": "CL11"
+  },
+  {
+    "Day": "WED",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "VNS",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A18",
+    "Teacher": "AMN",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A18",
+    "Teacher": "AMN",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "WED",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A17",
+    "Teacher": "NTJ",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "WED",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A17",
+    "Teacher": "NTJ",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "WED",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A15",
+    "Teacher": "MNK",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "WED",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A15",
+    "Teacher": "MNK",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24I13",
+    "Teacher": "MSD",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24I13",
+    "Teacher": "MSD",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "WED",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B12[24A12]",
+    "Teacher": "ATA",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "WED",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B12[24A12]",
+    "Teacher": "ATA",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "WED",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI417",
+    "Batch": "24N11",
+    "Teacher": "PLK",
+    "Venue": "TR2"
+  },
+  {
+    "Day": "WED",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24A110,24L11,24N11, 24I14,24C11,24P11,24F11",
+    "Teacher": "AMN",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24A17",
+    "Teacher": "RVS",
+    "Venue": "TR2"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "RBT",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "WED",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24A110,24L11,24N11,24I14,24C11,24P11,24F11",
+    "Teacher": "SKS",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "WED",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-24B11CI411",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "RKI",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "WED",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11EC414",
+    "Batch": "24H11",
+    "Teacher": "RKU",
+    "Venue": "TR4"
+  },
+  {
+    "Day": "WED",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-24B11CI411",
+    "Batch": "24J11,24J12,24K11,24I14",
+    "Teacher": "HST",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17BT471",
+    "Batch": "24F11",
+    "Teacher": "SML",
+    "Venue": "BIL"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17BT471",
+    "Batch": "24F11",
+    "Teacher": "SML",
+    "Venue": "BIL"
+  },
+  {
+    "Day": "WED",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "TYN",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "WED",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "AKJ",
+    "Venue": "CR8"
+  },
+  {
+    "Day": "WED",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "EMP",
+    "Venue": "CR8"
+  },
+  {
+    "Day": "THU",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A18",
+    "Teacher": "SRU",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "THU",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A18",
+    "Teacher": "SRU",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "THU",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17BT472",
+    "Batch": "24E11",
+    "Teacher": "SDS",
+    "Venue": "UG1"
+  },
+  {
+    "Day": "THU",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17BT472",
+    "Batch": "24E11",
+    "Teacher": "SDS",
+    "Venue": "UG1"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24I13",
+    "Teacher": "AVA",
+    "Venue": "CR18"
+  },
+  {
+    "Day": "THU",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A19",
+    "Teacher": "PRG",
+    "Venue": "ECL5"
+  },
+  {
+    "Day": "THU",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A19",
+    "Teacher": "PRG",
+    "Venue": "ECL5"
+  },
+  {
+    "Day": "THU",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "AKR",
+    "Venue": "DLC,CR4"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A16",
+    "Teacher": "ARV",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "THU",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A16",
+    "Teacher": "ARV",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "THU",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24J11,24J12,24K11",
+    "Teacher": "MSD",
+    "Venue": "CR5"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-24B17CI471",
+    "Batch": "24I12",
+    "Teacher": "RKI",
+    "Venue": "CL5_1"
+  },
+  {
+    "Day": "THU",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-24B17CI471",
+    "Batch": "24I12",
+    "Teacher": "RKI",
+    "Venue": "CL5_1"
+  },
+  {
+    "Day": "THU",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "SRJ",
+    "Venue": "CR9"
+  },
+  {
+    "Day": "THU",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "TYN",
+    "Venue": "CR8"
+  },
+  {
+    "Day": "THU",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-18B17CE471",
+    "Batch": "24D11",
+    "Teacher": "AKG",
+    "Venue": "GEOLAB"
+  },
+  {
+    "Day": "THU",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-18B17CE471",
+    "Batch": "24D11",
+    "Teacher": "AKG",
+    "Venue": "GEOLAB"
+  },
+  {
+    "Day": "THU",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WHS431",
+    "Batch": "",
+    "Teacher": "TGM",
+    "Venue": "CR4"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "RRA",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "THU",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B1WBT432",
+    "Batch": "24E11",
+    "Teacher": "UDB",
+    "Venue": "TR4"
+  },
+  {
+    "Day": "THU",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24A110,24L11,24N11,24C11,24I14",
+    "Teacher": "MNK",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "THU",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "AVA",
+    "Venue": "CR9"
+  },
+  {
+    "Day": "THU",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WHS432",
+    "Batch": "",
+    "Teacher": "DLR",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B1WCI435",
+    "Batch": "24C11",
+    "Teacher": "PTK",
+    "Venue": "TR7"
+  },
+  {
+    "Day": "THU",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24A110,24F11,24C11,24D11,24L11,24N11,24I14",
+    "Teacher": "PNS",
+    "Venue": "DLC,CR2"
+  },
+  {
+    "Day": "THU",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "PKG",
+    "Venue": "DLC,LT3"
+  },
+  {
+    "Day": "THU",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24A110,24C11,24P11,24F11",
+    "Teacher": "SKS",
+    "Venue": "CR19"
+  },
+  {
+    "Day": "THU",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WHS433",
+    "Batch": "",
+    "Teacher": "NJL",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24J11",
+    "Teacher": "SKS",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "THU",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24J11",
+    "Teacher": "SKS",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "THU",
+    "Time": "05:00 PM - 05:55 PM",
+    "Subject Code": "L-25B1WCI433/25B1WCI835",
+    "Batch": "B6[From all batches],24E11,24F11,CS-IT[MCSE]BI81",
+    "Teacher": "AYS",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "THU",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11EC415",
+    "Batch": "24G11",
+    "Teacher": "HSL",
+    "Venue": "CR16"
+  },
+  {
+    "Day": "THU",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11BT411",
+    "Batch": "24E11, 24F11",
+    "Teacher": "SML",
+    "Venue": "TR4"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "RBT",
+    "Venue": "DLC,CR7"
+  },
+  {
+    "Day": "THU",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WHS434",
+    "Batch": "",
+    "Teacher": "RTK",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24J12,24K11",
+    "Teacher": "SMA",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "THU",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24J12,24K11",
+    "Teacher": "SMA",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "THU",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CE411",
+    "Batch": "24D11",
+    "Teacher": "CPG",
+    "Venue": "CR13"
+  },
+  {
+    "Day": "THU",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24J11,24J12,24K11",
+    "Teacher": "AVA",
+    "Venue": "CR6"
+  },
+  {
+    "Day": "THU",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-24B11CI411",
+    "Batch": "24J11,24J12,24K11,24I14",
+    "Teacher": "HST",
+    "Venue": "CR10"
+  },
+  {
+    "Day": "THU",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24A110,24L11,24N11, 24I14,24C11,24P11,24F11",
+    "Teacher": "AMN",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11CI417",
+    "Batch": "24N11",
+    "Teacher": "PLK",
+    "Venue": "TR3"
+  },
+  {
+    "Day": "THU",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24J11,24J12,24K11,24E11,24F11",
+    "Teacher": "RKI",
+    "Venue": "CR12"
+  },
+  {
+    "Day": "THU",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-24B11CE413",
+    "Batch": "24D11",
+    "Teacher": "ADP",
+    "Venue": "TR8"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24I11",
+    "Teacher": "VNS",
+    "Venue": "CL8_1"
+  },
+  {
+    "Day": "THU",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24I11",
+    "Teacher": "VNS",
+    "Venue": "CL8_1"
+  },
+  {
+    "Day": "THU",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B1WCI431",
+    "Batch": "B2[24A14,24A15,24A16]",
+    "Teacher": "AYS",
+    "Venue": "CR10"
+  },
+  {
+    "Day": "THU",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "T-24BB1HS412",
+    "Batch": "24W11",
+    "Teacher": "TNS",
+    "Venue": "TR5"
+  },
+  {
+    "Day": "THU",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-24BBWHS431",
+    "Batch": "24W11",
+    "Teacher": "ASA",
+    "Venue": "TR6"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11EC411",
+    "Batch": "24B11,24G11",
+    "Teacher": "ALK",
+    "Venue": "CR11"
+  },
+  {
+    "Day": "THU",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24A12",
+    "Teacher": "AKJ",
+    "Venue": "TR6"
+  },
+  {
+    "Day": "THU",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "SWT",
+    "Venue": "CR4"
+  },
+  {
+    "Day": "THU",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "RKI",
+    "Venue": "BIL"
+  },
+  {
+    "Day": "THU",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "MNK",
+    "Venue": "CR9"
+  },
+  {
+    "Day": "THU",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-18B11BT411",
+    "Batch": "OTO",
+    "Teacher": "HSD",
+    "Venue": "CABIN"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A14",
+    "Teacher": "MNK",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "THU",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A14",
+    "Teacher": "MNK",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "THU",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B1WEC432",
+    "Batch": "24B11,24H11",
+    "Teacher": "NTJ",
+    "Venue": "ECL6"
+  },
+  {
+    "Day": "THU",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "T-25B1WCI435",
+    "Batch": "24C11",
+    "Teacher": "PTK",
+    "Venue": "TR6"
+  },
+  {
+    "Day": "THU",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "VNS",
+    "Venue": "CR7"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "T-25B11BT414",
+    "Batch": "24E11",
+    "Teacher": "RJK",
+    "Venue": "TR2"
+  },
+  {
+    "Day": "THU",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24A110,24L11,24N11,24I14",
+    "Teacher": "PDG",
+    "Venue": "CR5"
+  },
+  {
+    "Day": "THU",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17EC473",
+    "Batch": "24B11",
+    "Teacher": "PDG",
+    "Venue": "CL1"
+  },
+  {
+    "Day": "THU",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17EC473",
+    "Batch": "24B11",
+    "Teacher": "PDG",
+    "Venue": "CL1"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "AKJ",
+    "Venue": "CR7"
+  },
+  {
+    "Day": "THU",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "RVS",
+    "Venue": "CR10"
+  },
+  {
+    "Day": "THU",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-24BB1HS411",
+    "Batch": "24W11",
+    "Teacher": "ANU",
+    "Venue": "CR19"
+  },
+  {
+    "Day": "THU",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11EC413",
+    "Batch": "24B11,24G11",
+    "Teacher": "VKB",
+    "Venue": "CR17"
+  },
+  {
+    "Day": "THU",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17EC474",
+    "Batch": "24H11",
+    "Teacher": "RKU",
+    "Venue": "ECL6"
+  },
+  {
+    "Day": "THU",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17EC474",
+    "Batch": "24H11",
+    "Teacher": "RKU",
+    "Venue": "ECL6"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11CI418",
+    "Batch": "24L11",
+    "Teacher": "GVN",
+    "Venue": "CR19"
+  },
+  {
+    "Day": "THU",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "ALK",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "THU",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "RRA",
+    "Venue": "CR10"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI475/25BC7CI272",
+    "Batch": "24H11,25Q11",
+    "Teacher": "DBK",
+    "Venue": "CL11"
+  },
+  {
+    "Day": "THU",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI475/25BC7CI272",
+    "Batch": "24H11,25Q11",
+    "Teacher": "DBK",
+    "Venue": "CL11"
+  },
+  {
+    "Day": "THU",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A17",
+    "Teacher": "AMN",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "THU",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A17",
+    "Teacher": "AMN",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "THU",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "PNS",
+    "Venue": "CR8"
+  },
+  {
+    "Day": "THU",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-24BB7HS471",
+    "Batch": "24W11",
+    "Teacher": "NTJ",
+    "Venue": "ECL8"
+  },
+  {
+    "Day": "THU",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-24BB7HS471",
+    "Batch": "24W11",
+    "Teacher": "NTJ",
+    "Venue": "ECL8"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A16",
+    "Teacher": "MNK",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A16",
+    "Teacher": "MNK",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A17",
+    "Teacher": "RVS",
+    "Venue": "CL10"
+  },
+  {
+    "Day": "FRI",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A17",
+    "Teacher": "RVS",
+    "Venue": "CL10"
+  },
+  {
+    "Day": "FRI",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24I13",
+    "Teacher": "NSA",
+    "Venue": "CL3_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24I13",
+    "Teacher": "NSA",
+    "Venue": "CL3_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A13",
+    "Teacher": "SRU",
+    "Venue": "ECL3"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A13",
+    "Teacher": "SRU",
+    "Venue": "ECL3"
+  },
+  {
+    "Day": "FRI",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "RVS",
+    "Venue": "CR6"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "T-24BB1HS413",
+    "Batch": "24W11",
+    "Teacher": "TGM",
+    "Venue": "TR6"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A11,24H11",
+    "Teacher": "PDN",
+    "Venue": "CL5_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A11,24H11",
+    "Teacher": "PDN",
+    "Venue": "CL5_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B11BT412",
+    "Batch": "24E11",
+    "Teacher": "AKN",
+    "Venue": "CR17"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "T-25B11EC411",
+    "Batch": "24B11,24G11",
+    "Teacher": "ALK",
+    "Venue": "TR6"
+  },
+  {
+    "Day": "FRI",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "TYN",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "FRI",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11EC412",
+    "Batch": "24B11,24G11,24H11",
+    "Teacher": "PRG",
+    "Venue": "TR2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI418",
+    "Batch": "24L11",
+    "Teacher": "GVN",
+    "Venue": "CR19"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B22[24A15]",
+    "Teacher": "SSA",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B22[24A15]",
+    "Teacher": "SSA",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "AKR",
+    "Venue": "CR1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "PNS",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-24B11CE414",
+    "Batch": "24D11",
+    "Teacher": "KKR",
+    "Venue": "TR8"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "EMP",
+    "Venue": "CR7"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A18",
+    "Teacher": "RVS",
+    "Venue": "CL8_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A18",
+    "Teacher": "RVS",
+    "Venue": "CL8_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "01:00 PM - 01:55 PM",
+    "Subject Code": "P-25B1WCI473",
+    "Batch": "B63[24I11,24I12,24I13,24J11,24J12]",
+    "Teacher": "AYS",
+    "Venue": "ECL7"
+  },
+  {
+    "Day": "FRI",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "P-25B1WCI473",
+    "Batch": "B63[24I11,24I12,24I13,24J11,24J12]",
+    "Teacher": "AYS",
+    "Venue": "ECL7"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-24B11CI416",
+    "Batch": "24H11",
+    "Teacher": "EMP",
+    "Venue": "ECL8,TR4"
+  },
+  {
+    "Day": "FRI",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "L-25B1WEC432",
+    "Batch": "24B11,24H11",
+    "Teacher": "NTJ",
+    "Venue": "ECL6"
+  },
+  {
+    "Day": "FRI",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "MNK",
+    "Venue": "DLC,CR10"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "T-25B11EC413",
+    "Batch": "24B11,24G11",
+    "Teacher": "VKB",
+    "Venue": "TR5"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B31[24A17]",
+    "Teacher": "ATA",
+    "Venue": "CL10"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B31[24A17]",
+    "Teacher": "ATA",
+    "Venue": "CL10"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17BT474",
+    "Batch": "24E11",
+    "Teacher": "RJK",
+    "Venue": "BIL"
+  },
+  {
+    "Day": "FRI",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17BT474",
+    "Batch": "24E11",
+    "Teacher": "RJK",
+    "Venue": "BIL"
+  },
+  {
+    "Day": "FRI",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "SRJ",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-18B11CE411",
+    "Batch": "24D11",
+    "Teacher": "AKG",
+    "Venue": "CR15"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24L11,24N11,24I14",
+    "Teacher": "KLK",
+    "Venue": "CL3_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24L11,24N11,24I14",
+    "Teacher": "KLK",
+    "Venue": "CL3_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B1WCI431",
+    "Batch": "B5[24I11,24I12,24I13,24J11,24J12,24K11]",
+    "Teacher": "RVS",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A110",
+    "Teacher": "PDN",
+    "Venue": "CL3_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A110",
+    "Teacher": "PDN",
+    "Venue": "CL3_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24J11,24J12,24K11",
+    "Teacher": "AVA",
+    "Venue": "CR8"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11EC414",
+    "Batch": "24H11",
+    "Teacher": "RKU",
+    "Venue": "TR4"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24J11,24J12,24K11",
+    "Teacher": "VNS",
+    "Venue": "CR8"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-24B11CE412",
+    "Batch": "24D11",
+    "Teacher": "ABJ",
+    "Venue": "TR9"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24A11",
+    "Teacher": "AKJ",
+    "Venue": "TR1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "05:00 PM - 05:55 PM",
+    "Subject Code": "L-25B1WHS432",
+    "Batch": "",
+    "Teacher": "DLR",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "FRI",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "T-24BB1HS411",
+    "Batch": "24W11",
+    "Teacher": "ANU",
+    "Venue": "TR7"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-24BB1HS414",
+    "Batch": "24W11",
+    "Teacher": "DLR",
+    "Venue": "TR7"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24L11,24N11,24I14",
+    "Teacher": "AMN",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24L11,24N11,24I14",
+    "Teacher": "AMN",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "05:00 PM - 05:55 PM",
+    "Subject Code": "L-25B1WHS433",
+    "Batch": "",
+    "Teacher": "NJL",
+    "Venue": "CR5"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-24B11CI411",
+    "Batch": "24J11,24J12,24K11,24I14",
+    "Teacher": "HST",
+    "Venue": "CR4"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A14,24B11",
+    "Teacher": "PKG",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A14,24B11",
+    "Teacher": "PKG",
+    "Venue": "CL4"
+  },
+  {
+    "Day": "FRI",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B11EC416",
+    "Batch": "24B11",
+    "Teacher": "PDG",
+    "Venue": "TR3"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B52[24I12,24K11]",
+    "Teacher": "ATA",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "FRI",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B52[24I12,24K11]",
+    "Teacher": "ATA",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "FRI",
+    "Time": "05:00 PM - 05:55 PM",
+    "Subject Code": "L-25B1WHS434",
+    "Batch": "",
+    "Teacher": "RTK",
+    "Venue": "LT2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24C11,24P11",
+    "Teacher": "SKP",
+    "Venue": "CL3_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24C11,24P11",
+    "Teacher": "SKP",
+    "Venue": "CL3_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B43[24C11,24F11]",
+    "Teacher": "GVN",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B43[24C11,24F11]",
+    "Teacher": "GVN",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24A17,24A18,24A19",
+    "Teacher": "NTJ",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A110",
+    "Teacher": "PDG",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A110",
+    "Teacher": "PDG",
+    "Venue": "ECL4"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "ARV",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "T-18BIWBT631",
+    "Batch": "24E11,24F11",
+    "Teacher": "GPL",
+    "Venue": "CR12"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B1WCI431",
+    "Batch": "24A11,24A12,24A13,24E11,24F11",
+    "Teacher": "ATA",
+    "Venue": "CR10"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17BT473",
+    "Batch": "24E11",
+    "Teacher": "TYN",
+    "Venue": "BIOCHEM"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17BT473",
+    "Batch": "24E11",
+    "Teacher": "ABH",
+    "Venue": "BIOCHEM"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24I13",
+    "Teacher": "VNS",
+    "Venue": "CL1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24I13",
+    "Teacher": "VNS",
+    "Venue": "CL1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24I12",
+    "Teacher": "VNS",
+    "Venue": "CL8_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24I12",
+    "Teacher": "VNS",
+    "Venue": "CL8_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A12",
+    "Teacher": "AKJ",
+    "Venue": "CL3_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A12",
+    "Teacher": "AKJ",
+    "Venue": "CL3_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "02:00 PM - 02:55 PM",
+    "Subject Code": "L-25B11CI412",
+    "Batch": "24A110,24L11,24N11,24I14,24C11,24P11,24F11",
+    "Teacher": "SKS",
+    "Venue": "CR10"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24C11,24P11,24F11",
+    "Teacher": "SKS",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24C11,24P11,24F11",
+    "Teacher": "SKS",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "FRI",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI477",
+    "Batch": "24N11",
+    "Teacher": "PLK",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI477",
+    "Batch": "24N11",
+    "Teacher": "PLK",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11GE411",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "PNS",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24I11",
+    "Teacher": "AVA",
+    "Venue": "CL11"
+  },
+  {
+    "Day": "FRI",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24I11",
+    "Teacher": "AVA",
+    "Venue": "CL11"
+  },
+  {
+    "Day": "FRI",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A19",
+    "Teacher": "AMN",
+    "Venue": "CL8_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A19",
+    "Teacher": "AMN",
+    "Venue": "CL8_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "03:00 PM - 03:55 PM",
+    "Subject Code": "P-24B17CI471",
+    "Batch": "24J11",
+    "Teacher": "MNK",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "FRI",
+    "Time": "04:00 PM - 04:55 PM",
+    "Subject Code": "P-24B17CI471",
+    "Batch": "24J11",
+    "Teacher": "MNK",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "SAT",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A18",
+    "Teacher": "MNK",
+    "Venue": "CL5_1"
+  },
+  {
+    "Day": "SAT",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI476",
+    "Batch": "24A18",
+    "Teacher": "MNK",
+    "Venue": "CL5_1"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A19",
+    "Teacher": "RVS",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A19",
+    "Teacher": "RVS",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B32[24A18]",
+    "Teacher": "ATA",
+    "Venue": "CL8_1"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B32[24A18]",
+    "Teacher": "ATA",
+    "Venue": "CL8_1"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI478",
+    "Batch": "24L11",
+    "Teacher": "GVN",
+    "Venue": "CL3_1"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI478",
+    "Batch": "24L11",
+    "Teacher": "GVN",
+    "Venue": "CL3_1"
+  },
+  {
+    "Day": "SAT",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B42[24L11,24N11,24I14]",
+    "Teacher": "AYS",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "SAT",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B42[24L11,24N11,24I14]",
+    "Teacher": "AYS",
+    "Venue": "CL9_1"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B1WEC431",
+    "Batch": "24B11,24H11",
+    "Teacher": "VKB",
+    "Venue": "TR6"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11BT411",
+    "Batch": "24E11, 24F11",
+    "Teacher": "SML",
+    "Venue": "TR7"
+  },
+  {
+    "Day": "SAT",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24A16",
+    "Teacher": "ARV",
+    "Venue": "TR2"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-25B11CI417",
+    "Batch": "24N11",
+    "Teacher": "PLK",
+    "Venue": "TR5"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24A15",
+    "Teacher": "ARV",
+    "Venue": "TR1"
+  },
+  {
+    "Day": "SAT",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-24B11CI411",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "RKI",
+    "Venue": "LT3"
+  },
+  {
+    "Day": "SAT",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24A13",
+    "Teacher": "AKJ",
+    "Venue": "TR3"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A13",
+    "Teacher": "RBT",
+    "Venue": "CL5_1"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI473",
+    "Batch": "24A13",
+    "Teacher": "RBT",
+    "Venue": "CL5_1"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "L-18B11BT411",
+    "Batch": "OTO",
+    "Teacher": "UDB",
+    "Venue": "CABIN"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-18B11BT411",
+    "Batch": "OTO",
+    "Teacher": "UDB",
+    "Venue": "CABIN"
+  },
+  {
+    "Day": "SAT",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-24B11GE411",
+    "Batch": "24J11,24J12,24K11",
+    "Teacher": "RRA",
+    "Venue": "CR1"
+  },
+  {
+    "Day": "SAT",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI413",
+    "Batch": "24I11,24I12,24I13",
+    "Teacher": "VNS",
+    "Venue": "DLC,CR2"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-24B17CI471",
+    "Batch": "24I13,24I14",
+    "Teacher": "MNK",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-24B17CI471",
+    "Batch": "24I13,24I14",
+    "Teacher": "MNK",
+    "Venue": "CL6"
+  },
+  {
+    "Day": "SAT",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B1WCI435",
+    "Batch": "24C11",
+    "Teacher": "PTK",
+    "Venue": "CR18"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24I12",
+    "Teacher": "AVA",
+    "Venue": "CR16"
+  },
+  {
+    "Day": "SAT",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A110",
+    "Teacher": "SKS",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "SAT",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17CI472",
+    "Batch": "24A110",
+    "Teacher": "SKS",
+    "Venue": "CL9_2"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A16",
+    "Teacher": "EMP",
+    "Venue": "ECL5"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24A16",
+    "Teacher": "EMP",
+    "Venue": "ECL5"
+  },
+  {
+    "Day": "SAT",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24A14,24A15,24A16",
+    "Teacher": "EMP",
+    "Venue": "CR2"
+  },
+  {
+    "Day": "SAT",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B1WBT432",
+    "Batch": "24E11",
+    "Teacher": "UDB",
+    "Venue": "TR6"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24J12,24K11",
+    "Teacher": "MSD",
+    "Venue": "ECL3"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI471",
+    "Batch": "24J12,24K11",
+    "Teacher": "MSD",
+    "Venue": "ECL3"
+  },
+  {
+    "Day": "SAT",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-18B1WBT631",
+    "Batch": "24E11,24F11",
+    "Teacher": "GPL",
+    "Venue": "CR12"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "L-25B11EC416",
+    "Batch": "24B11",
+    "Teacher": "PDG",
+    "Venue": "TR6"
+  },
+  {
+    "Day": "SAT",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "L-25B11CI414",
+    "Batch": "24J11,24J12,24K11,24E11,24F11",
+    "Teacher": "RKI",
+    "Venue": "CR5"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "T-25B11BT415",
+    "Batch": "24E11",
+    "Teacher": "JTV",
+    "Venue": "TR2"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "T-25B11CI412",
+    "Batch": "24J11",
+    "Teacher": "AVA",
+    "Venue": "TR4"
+  },
+  {
+    "Day": "SAT",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "L-25B11CI411",
+    "Batch": "24A11,24A12,24A13",
+    "Teacher": "ALK",
+    "Venue": "CR5"
+  },
+  {
+    "Day": "SAT",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "T-25BIICI412",
+    "Batch": "24A19",
+    "Teacher": "RVS",
+    "Venue": "CR16"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B17CI376",
+    "Batch": "24C11",
+    "Teacher": "AKR",
+    "Venue": "CL7"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B17CI376",
+    "Batch": "24C11",
+    "Teacher": "AKR",
+    "Venue": "CL7"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-24B17CI471",
+    "Batch": "24I11",
+    "Teacher": "RKI",
+    "Venue": "CL8_2"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-24B17CI471",
+    "Batch": "24I11",
+    "Teacher": "RKI",
+    "Venue": "CL8_2"
+  },
+  {
+    "Day": "SAT",
+    "Time": "09:00 AM - 09:55 AM",
+    "Subject Code": "P-25B17EC472",
+    "Batch": "24B11,24G11,24H11",
+    "Teacher": "PRG",
+    "Venue": "ECL3"
+  },
+  {
+    "Day": "SAT",
+    "Time": "10:00 AM - 10:55 AM",
+    "Subject Code": "P-25B17EC472",
+    "Batch": "24B11,24G11,24H11",
+    "Teacher": "PRG",
+    "Venue": "ECL3"
+  },
+  {
+    "Day": "SAT",
+    "Time": "11:00 AM - 11:55 AM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B41[24A110]",
+    "Teacher": "AYS",
+    "Venue": "CL5_2"
+  },
+  {
+    "Day": "SAT",
+    "Time": "12:00 PM - 12:55 PM",
+    "Subject Code": "P-25B1WCI471",
+    "Batch": "B41[24A110]",
+    "Teacher": "AYS",
+    "Venue": "CL5_2"
+  }
+]

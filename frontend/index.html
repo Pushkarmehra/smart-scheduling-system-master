@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Academic Scheduling System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <main class="app-shell">
+        <section class="panel auth-panel" id="login-panel">
+            <h2>Login</h2>
+            <p class="modal-subtext">Select role and sign in to access timetable tools.</p>
+            <div class="form-grid">
+                <label>
+                    Role
+                    <select id="role-select">
+                        <option value="admin">Admin</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
+                    </select>
+                </label>
+                <label>
+                    Name
+                    <input type="text" id="name-input" placeholder="Enter your name">
+                </label>
+                <label id="batch-login-wrap" class="hidden">
+                    Batch
+                    <select id="student-batch-select"></select>
+                </label>
+            </div>
+            <div class="action-row">
+                <button id="login-btn" class="primary-btn" type="button">Login</button>
+            </div>
+        </section>
+
+        <section id="app-view" class="dashboard hidden">
+            <aside class="panel sidebar" id="app-sidebar">
+                <h3>Navigation</h3>
+                <div class="sidebar-nav">
+                    <button id="nav-timetable" class="ghost-btn nav-btn" type="button">Timetable</button>
+                    <button id="nav-teacher" class="ghost-btn nav-btn" type="button">Teacher Portal</button>
+                    <button id="nav-requests" class="ghost-btn nav-btn" type="button">Student Shift Requests</button>
+                </div>
+                <div class="action-row">
+                    <button id="logout-btn" class="ghost-btn" type="button">Logout</button>
+                </div>
+            </aside>
+
+            <div class="dashboard-main">
+                <header class="hero-card">
+                    <p class="eyebrow">Faculty Workspace</p>
+                    <h1>Smart Scheduling Command Center</h1>
+                    <p class="subtitle">Manage schedules across admin, teacher, and student workflows in one real-time system.</p>
+                    <div class="hero-meta">
+                        <span id="user-chip" class="meta-chip">User: Guest</span>
+                        <span id="class-count" class="meta-chip">Classes: 0</span>
+                        <span id="status-chip" class="meta-chip chip-ok">System Ready</span>
+                    </div>
+                </header>
+
+                <section class="panel timetable-section" id="admin-panel">
+            <div class="panel-head">
+                <h2>Live Timetable Board</h2>
+                <button id="create-timetable-btn" class="primary-btn" type="button">Open Timetable Generator</button>
+                <button id="save-drag-btn" class="primary-btn" type="button" disabled>Save Drag Changes</button>
+                <span id="pending-moves-chip" class="meta-chip">Pending moves: 0</span>
+                <div class="search-wrap">
+                    <select id="admin-teacher-filter" aria-label="Filter by teacher"></select>
+                </div>
+                <div class="search-wrap">
+                    <input
+                        type="text"
+                        id="search-bar"
+                        placeholder="Search by faculty, course, batch, day, room, or time"
+                        aria-label="Search timetable"
+                    >
+                </div>
+            </div>
+            <p id="drag-hint" class="modal-subtext">Login as admin or teacher to drag and drop classes across slots.</p>
+
+            <div class="board-wrap">
+                <div id="schedule-grid" class="schedule-grid"></div>
+            </div>
+
+            <div class="editor-box" id="admin-editor-box">
+                <h3>Edit Class</h3>
+                <div class="form-grid">
+                    <label>
+                        Class
+                        <select id="admin-class-select"></select>
+                    </label>
+                    <label>
+                        Day
+                        <select id="admin-day-select"></select>
+                    </label>
+                    <label>
+                        Time Slot
+                        <select id="admin-slot-select"></select>
+                    </label>
+                    <label>
+                        Batch
+                        <select id="admin-batch-select"></select>
+                    </label>
+                    <label>
+                        Teacher
+                        <select id="admin-teacher-select"></select>
+                    </label>
+                    <label>
+                        Course
+                        <input type="text" id="admin-course-input" placeholder="Course name">
+                    </label>
+                    <label>
+                        Room
+                        <select id="admin-room-select"></select>
+                    </label>
+                </div>
+                <div class="action-row">
+                    <button id="admin-save-btn" class="primary-btn" type="button">Save Class Update</button>
+                </div>
+            </div>
+                </section>
+
+                <section class="panel hidden" id="teacher-panel">
+            <div class="panel-head">
+                <h2>Teacher Portal</h2>
+                <button id="teacher-refresh-btn" class="ghost-btn" type="button">Refresh</button>
+            </div>
+            <div id="teacher-classes" class="list-wrap"></div>
+            <div class="editor-box">
+                <h3>Update My Class</h3>
+                <div class="form-grid">
+                    <label>
+                        My Class
+                        <select id="teacher-class-select"></select>
+                    </label>
+                    <label>
+                        Day
+                        <select id="teacher-day-select"></select>
+                    </label>
+                    <label>
+                        Time Slot
+                        <select id="teacher-slot-select"></select>
+                    </label>
+                    <label>
+                        Batch
+                        <select id="teacher-batch-select"></select>
+                    </label>
+                </div>
+                <div class="action-row">
+                    <button id="teacher-save-btn" class="primary-btn" type="button">Save My Update</button>
+                </div>
+            </div>
+                </section>
+
+                <section class="panel hidden" id="requests-panel">
+                    <h2>Student Shift Requests</h2>
+                    <p class="modal-subtext">Review and act on requests sent by students.</p>
+                    <div id="teacher-requests" class="list-wrap"></div>
+                </section>
+
+                <section class="panel hidden" id="student-panel">
+                    <h2>Student Shift Requests</h2>
+                    <p class="modal-subtext">Submit a class shift request. It reaches the teacher only when support is more than 50% of class strength.</p>
+
+                    <div class="form-grid">
+                <label>
+                    Batch
+                    <select id="student-batch-view"></select>
+                </label>
+                <label>
+                    Class
+                    <select id="student-class-select"></select>
+                </label>
+                <label>
+                    Preferred Day
+                    <select id="student-day-select"></select>
+                </label>
+                <label>
+                    Preferred Time Slot
+                    <select id="student-slot-select"></select>
+                </label>
+                <label>
+                    Support Count
+                    <input type="number" id="support-count-input" min="0" value="1">
+                </label>
+                <label>
+                    Class Strength
+                    <input type="number" id="class-strength-input" min="1" value="60">
+                </label>
+                <label class="full-width">
+                    Reason
+                    <textarea id="student-reason-input" rows="3" placeholder="Reason for shift request"></textarea>
+                </label>
+                    </div>
+
+                    <div class="action-row">
+                <button id="student-request-btn" class="primary-btn" type="button">Submit Request</button>
+                    </div>
+                    <div id="student-request-status" class="meta-chip"></div>
+                </section>
+
+                <section id="email-preview-section" class="panel hidden">
+            <h2>System Notification Preview</h2>
+            <div id="email-content" class="email-box"></div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <div id="class-detail-modal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content detail-modal-content">
+            <div class="modal-head">
+                <h3>Class Details</h3>
+                <button id="class-detail-close" class="ghost-btn" type="button">Close</button>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-item">
+                    <span class="detail-label">Subject Code</span>
+                    <span id="detail-subject" class="detail-value">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Teacher</span>
+                    <span id="detail-teacher" class="detail-value">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Venue</span>
+                    <span id="detail-venue" class="detail-value">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Batch</span>
+                    <span id="detail-batch" class="detail-value">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Day</span>
+                    <span id="detail-day" class="detail-value">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Time</span>
+                    <span id="detail-time" class="detail-value">-</span>
+                </div>
+            </div>
+
+            <div id="reschedule-panel" class="editor-box">
+                <h3>Reschedule Options</h3>
+                <p id="reschedule-hint" class="modal-subtext">Select a valid slot to reschedule this class.</p>
+
+                <div class="form-grid">
+                    <label class="full-width">
+                        Choose Day
+                        <select id="reschedule-day-filter"></select>
+                    </label>
+                </div>
+
+                <div id="reschedule-options" class="suggestions-container"></div>
+
+                <div class="form-grid">
+                    <label class="full-width">
+                        Recipient Email
+                        <input type="email" id="reschedule-recipient-email" placeholder="example@college.edu" value="aryansuneja121@gmail.com">
+                    </label>
+                    <label class="full-width">
+                        Reschedule Reason (optional)
+                        <textarea id="reschedule-reason-input" rows="3" placeholder="Add reason to include in the notification mail"></textarea>
+                    </label>
+                </div>
+
+                <div class="action-row">
+                    <button id="confirm-reschedule-btn" class="primary-btn" type="button" disabled>Confirm Reschedule</button>
+                    <button id="send-reschedule-mail-btn" class="ghost-btn" type="button" disabled>Send Mail Notification</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
